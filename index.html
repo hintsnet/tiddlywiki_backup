@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/config/AnimationDuration</li>
 
+<li>$:/config/DefaultSidebarTab</li>
+
 <li>$:/config/HideSidebarOnStartup</li>
 
 <li>$:/config/Navigation/UpdateAddressBar</li>
@@ -211,10 +213,6 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
-<li>$:/state/tab-1749438307</li>
-
-<li>$:/state/tab-2065006209</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -243,6 +241,8 @@ Error message and password prompt
 
 <li>block-unwanted-webpage-ads-using-ublock-origin</li>
 
+<li>custom-title-css-style</li>
+
 <li>how-to-config-tiddlywiki-to-hide-sidebar-by-default</li>
 
 <li>ios-workflow-for-anki-card-auto-generation</li>
@@ -250,6 +250,8 @@ Error message and password prompt
 <li>login</li>
 
 <li>pimgeek</li>
+
+<li>the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier</li>
 
 <li>what-is-progressive-jpg-image</li>
 
@@ -298,6 +300,9 @@ exports.startup = function() {
 </div>
 <div created="20191015230604065" creator="pimgeek" modified="20191015230726962" modifier="pimgeek" title="$:/config/AnimationDuration" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>80</pre>
+</div>
+<div created="20191020150519510" creator="pimgeek" modified="20191020150521685" modifier="pimgeek" title="$:/config/DefaultSidebarTab" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20151007165524815" creator="Tobias Beer" modified="20191020130226825" modifier="pimgeek" tags="" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
@@ -9528,16 +9533,16 @@ exports.startup = function() {
 <div created="20191015074246381" creator="pimgeek" modified="20191020130248843" modifier="pimgeek" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>about</pre>
 </div>
-<div created="20191020140212164" creator="pimgeek" modified="20191020140214223" modifier="pimgeek" title="$:/GitHub/Filename" revision="10" bag="default">
+<div created="20191020140212164" creator="pimgeek" modified="20191020140217342" modifier="pimgeek" title="$:/GitHub/Filename" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>index.html</pre>
 </div>
-<div created="20191020140209051" creator="pimgeek" modified="20191020140209052" modifier="pimgeek" title="$:/GitHub/Path" revision="1" bag="default">
+<div created="20191020140209051" creator="pimgeek" modified="20191020140211221" modifier="pimgeek" title="$:/GitHub/Path" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>/</pre>
 </div>
-<div created="20191020140148507" creator="pimgeek" modified="20191020140155949" modifier="pimgeek" title="$:/GitHub/Repo" revision="26" bag="default">
+<div created="20191020140148507" creator="pimgeek" modified="20191020140158683" modifier="pimgeek" title="$:/GitHub/Repo" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hintsnet/tiddlywiki_backup</pre>
 </div>
-<div created="20191020140142501" creator="pimgeek" modified="20191020140143301" modifier="pimgeek" title="$:/GitHub/Username" revision="7" bag="default">
+<div created="20191020140142501" creator="pimgeek" modified="20191020140145673" modifier="pimgeek" title="$:/GitHub/Username" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>pimgeek</pre>
 </div>
 <div title="$:/isEncrypted" revision="0" bag="default">
@@ -13886,14 +13891,8 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191020140133485" creator="pimgeek" modified="20191020140135487" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191020153552545" creator="pimgeek" modified="20191020153909153" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
-</div>
-<div created="20191020140138958" creator="pimgeek" modified="20191020140138958" modifier="pimgeek" title="$:/state/tab-1749438307" revision="1" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
-</div>
-<div created="20191020140140047" creator="pimgeek" modified="20191020140140047" modifier="pimgeek" title="$:/state/tab-2065006209" revision="1" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>no</pre>
@@ -13907,7 +13906,7 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div created="20191020140137358" creator="pimgeek" list="about" modified="20191020140137358" modifier="pimgeek" title="$:/StoryList" revision="3" bag="default">
+<div list="about" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13923,7 +13922,7 @@ exports.click = ClickListener;
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://wiki.hintsnet.com/&quot;
+            &quot;text&quot;: &quot;https://wiki.hintsnet.com/?1&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -13947,7 +13946,7 @@ exports.click = ClickListener;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;?1&quot;
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
@@ -13968,7 +13967,7 @@ exports.click = ClickListener;
     }
 }</pre>
 </div>
-<div created="20191015083037292" creator="pimgeek" modified="20191015084306056" modifier="pimgeek" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191015083037292" creator="pimgeek" modified="20191020151359206" modifier="pimgeek" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
@@ -14083,8 +14082,8 @@ exports.click = ClickListener;
 <div created="20191015081737638" creator="pimgeek" modified="20191015081742865" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20191019064450620" creator="pimgeek" modified="20191019064453023" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/options/stickytitles" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>yes</pre>
+<div created="20191019064450620" creator="pimgeek" modified="20191020150814030" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/options/stickytitles" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>no</pre>
 </div>
 <div created="20191015081827243" creator="pimgeek" modified="20191017015852735" modifier="pimgeek" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>pop</pre>
@@ -14100,6 +14099,14 @@ exports.click = ClickListener;
 下图给出了一个示例, 先点击 uBlock Origin 按钮, 然后点击手动屏蔽工具, 接着在网页上选择一个有广告的区域, 最后点击创建按钮, 就搞定了.
 
 &lt;center&gt;&lt;img style=&quot;height:65vh;width:auto;&quot; src=&quot;https://pimfans.hintsnet.com/picgo/tutorial-block-webpage-sidebar-ads.gif&quot; /&gt;&lt;/center&gt;</pre>
+</div>
+<div created="20191020152607678" creator="pimgeek" modified="20191020153324688" modifier="pimgeek" tags="$:/tags/Stylesheet" title="custom-title-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>.tc-titlebar {
+ line-height:100% !important;
+}
+.tc-titlebar h2 { 
+ font-size:calc(max(3vh,2vw)) !important;
+}</pre>
 </div>
 <div created="20191020130425376" creator="pimgeek" modified="20191020131107873" modifier="pimgeek" tags="" title="how-to-config-tiddlywiki-to-hide-sidebar-by-default" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 如何配置 TiddlyWiki, 使其默认情况下隐藏侧边栏?
@@ -14118,6 +14125,17 @@ exports.click = ClickListener;
 </div>
 <div created="20191016084816375" creator="pimgeek" modified="20191016084904206" modifier="pimgeek" title="pimgeek" type="text/x-markdown" revision="0" bag="default">
 <pre>## 用知识跨越时空界限, 建立互助连接</pre>
+</div>
+<div created="20191020141247744" creator="pimgeek" modified="20191020150149406" modifier="pimgeek" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! 分享一些 &quot;相见恨晚的知识&quot;
+
+&quot;相见恨晚的知识&quot; 是本站的重要内容专题之一。
+
+之所以创建这个专题，是因为笔者([[pimgeek]])曾于 2013 年在知乎网上回答过一个热门问题 “[[你有什么相见恨晚的知识想推荐给年轻人？|https://www.zhihu.com/question/22238159/answer/20783349]]” 。回答后不久，意外得到许多读者的关注和赞同，有些人还在评论中进一步提问，不断激发出笔者的思考和分享热情。
+
+然而随着时间推移，加入分享列表的知识越来越多，回答文章变得越来越冗长啰嗦，编辑修订也变得很别扭，对知识分享列表的更新也因此陷入停滞。痛定思痛，笔者开始寻求新的知识分享列表组织形式，几经辗转，最终选中了 TiddlyWiki 这个非线性的卡片式内容管理工具。
+
+可以说，如果没有那段知识分享陷入停滞的经历，就不会想到建立这样一个知识库。而既然知识库已经建起来了，第一个内容专题自然就是 “相见恨晚的知识”。</pre>
 </div>
 <div created="20191016141702552" creator="pimgeek" modified="20191016142103946" modifier="pimgeek" tags="" title="what-is-progressive-jpg-image" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 什么是渐进式 JPG 图片
