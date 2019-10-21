@@ -241,15 +241,21 @@ Error message and password prompt
 
 <li>block-unwanted-webpage-ads-using-ublock-origin</li>
 
-<li>custom-title-css-style</li>
+<li>custom-site-css-style</li>
+
+<li>how-to-change-default-css-style-of-a-tiddlywiki-site</li>
 
 <li>how-to-config-tiddlywiki-to-hide-sidebar-by-default</li>
+
+<li>how-to-create-table-in-tiddlywiki-tiddlers</li>
 
 <li>ios-workflow-for-anki-card-auto-generation</li>
 
 <li>login</li>
 
 <li>pimgeek</li>
+
+<li>pimgeek-preferred-km-software-shortcut-key-checklist</li>
 
 <li>the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier</li>
 
@@ -13891,7 +13897,7 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191020153552545" creator="pimgeek" modified="20191020153909153" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191021135825390" creator="pimgeek" modified="20191021140928261" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -13906,7 +13912,7 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div list="about" title="$:/StoryList" revision="1" bag="default">
+<div created="20191021140001166" creator="pimgeek" list="how-to-change-default-css-style-of-a-tiddlywiki-site custom-site-css-style" modified="20191021140001166" modifier="pimgeek" title="$:/StoryList" revision="24" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13922,7 +13928,7 @@ exports.click = ClickListener;
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://wiki.hintsnet.com/?1&quot;
+            &quot;text&quot;: &quot;https://wiki.hintsnet.com/&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -13946,7 +13952,7 @@ exports.click = ClickListener;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
-            &quot;text&quot;: &quot;?1&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
@@ -14100,13 +14106,28 @@ exports.click = ClickListener;
 
 &lt;center&gt;&lt;img style=&quot;height:65vh;width:auto;&quot; src=&quot;https://pimfans.hintsnet.com/picgo/tutorial-block-webpage-sidebar-ads.gif&quot; /&gt;&lt;/center&gt;</pre>
 </div>
-<div created="20191020152607678" creator="pimgeek" modified="20191020153324688" modifier="pimgeek" tags="$:/tags/Stylesheet" title="custom-title-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191020152607678" creator="pimgeek" modified="20191021140810751" modifier="pimgeek" tags="$:/tags/Stylesheet" title="custom-site-css-style" type="text/vnd.tiddlywiki" revision="11" bag="default">
 <pre>.tc-titlebar {
  line-height:100% !important;
 }
-.tc-titlebar h2 { 
- font-size:calc(max(3vh,2vw)) !important;
+.tc-titlebar h2 {
+ border-left: 3px solid orange;
+ border-bottom: 1px dashed orange;
+ padding-left: 6px;
+ padding-bottom: 2px;
+ color: dimgray;
+ font-size:14px !important;
+}
+.tc-tiddler-frame {
+ border-radius:12px !important;
 }</pre>
+</div>
+<div created="20191021011135622" creator="pimgeek" modified="20191021135712321" modifier="pimgeek" tags="" title="how-to-change-default-css-style-of-a-tiddlywiki-site" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! 如何改变 TiddlyWiki 站点的默认 CSS 样式?
+
+可以在站内创建一个新条目 [[custom-site-css-style]], 并为其打上某个特殊的系统级标签.
+
+具体操作方法参考 - https://tiddlywiki.com/#Using%20Stylesheets</pre>
 </div>
 <div created="20191020130425376" creator="pimgeek" modified="20191020131107873" modifier="pimgeek" tags="" title="how-to-config-tiddlywiki-to-hide-sidebar-by-default" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 如何配置 TiddlyWiki, 使其默认情况下隐藏侧边栏?
@@ -14114,6 +14135,29 @@ exports.click = ClickListener;
 有两种方法, 一种是在侧边栏隐藏的状态下保存 Wiki, 另一种需要导入两个专用的系统条目并设置自动隐藏开关.
 
 具体可参考 - https://github.com/Jermolene/TiddlyWiki5/issues/3171</pre>
+</div>
+<div created="20191021072113024" creator="pimgeek" modified="20191021072814258" modifier="pimgeek" tags="" title="how-to-create-table-in-tiddlywiki-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! 如何在 TiddlyWiki 的条目 (Tiddler) 中创建表格?
+
+点击编辑工具栏中的印章按钮即可找到插入表格的选项. 
+
+一个表格示例:
+
+|!    | !一 | !二 | !三 | !四 |
+|! 1 | A   |       |       |      |
+|! 2 |      | B    |       |      |
+|! 3 |      |       | C    |      |
+
+对应的源码是:
+
+```
+|!  | !一 | !二 | !三 | !四 |
+|!1 | A   |     |    |     |
+|!2 |     | B   |    |     |
+|!3 |     |     | C  |     |
+```
+
+具体可参考 - https://tiddlywiki.com/#Tables%20in%20WikiText</pre>
 </div>
 <div created="20191018154539340" creator="pimgeek" modified="20191018154854925" modifier="pimgeek" tags="" title="ios-workflow-for-anki-card-auto-generation" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 在 iOS 系统中利用 workflow App 自动生成 Anki 卡片
@@ -14125,6 +14169,19 @@ exports.click = ClickListener;
 </div>
 <div created="20191016084816375" creator="pimgeek" modified="20191016084904206" modifier="pimgeek" title="pimgeek" type="text/x-markdown" revision="0" bag="default">
 <pre>## 用知识跨越时空界限, 建立互助连接</pre>
+</div>
+<div created="20191021024856016" creator="pimgeek" modified="20191021135606227" modifier="pimgeek" tags="" title="pimgeek-preferred-km-software-shortcut-key-checklist" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! pimgeek 偏好的 KM 软件快捷键检查列表
+
+@@background-color:white;
+| !功能名称 | !功能说明 | !偏好的快捷键 | !软件案例 |
+| 创建节点 | 创建一个新的笔记/卡片/条目 | Ctrl-N | [[ZimWiki]] |
+| 编辑模式 | 启用编辑模式 | F2 | [[TheBrain]] / [[ConnectedText]] |
+| 创建外链 | 创建一个指向外部网站的超链接 | Ctrl-L | .. |
+| 调整缩进 | 增加或减少缩进 | Tab, Shift-Tab | [[Workflowy]] |
+| 自动完成 | 弹出一个可选输入列表 | Ctrl-Space 或 Ctrl-/ | [[ConnectedText]] |
+|..|..|..|..|
+@@</pre>
 </div>
 <div created="20191020141247744" creator="pimgeek" modified="20191020150149406" modifier="pimgeek" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! 分享一些 &quot;相见恨晚的知识&quot;
