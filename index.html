@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/ui/ListItemTemplate</li>
+
+<li>$:/core/ui/TagTemplate</li>
+
 <li>$:/DefaultTiddlers</li>
 
 <li>$:/GitHub/Filename</li>
@@ -247,6 +251,8 @@ Error message and password prompt
 
 <li>block-unwanted-webpage-ads-using-ublock-origin</li>
 
+<li>centered-div-content-block</li>
+
 <li>disordered-information-blackhole-warning</li>
 
 <li>how-to-change-default-css-style-of-a-tiddlywiki-site</li>
@@ -254,6 +260,8 @@ Error message and password prompt
 <li>how-to-config-tiddlywiki-to-hide-sidebar-by-default</li>
 
 <li>how-to-create-table-in-tiddlywiki-tiddlers</li>
+
+<li>how-to-enter-flow-experience</li>
 
 <li>how-to-generate-anki-card-automatically-with-ios-workflow-app</li>
 
@@ -270,6 +278,8 @@ Error message and password prompt
 <li>pimgeek-customized-timeline-macro</li>
 
 <li>pimgeek-preferred-km-software-shortcut-key-checklist</li>
+
+<li>tag-function-related-system-tiddlers</li>
 
 <li>the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier</li>
 
@@ -9559,6 +9569,36 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20191024093906354" creator="pimgeek" modified="20191024093947155" modifier="pimgeek" title="$:/core/ui/ListItemTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-menu-list-item&quot;&gt;
+&lt;$link to={{!!title}}&gt;
+&lt;$view field=&quot;name&quot;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;/$view&gt;
+&lt;/$link&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20191024094036094" creator="pimgeek" modified="20191024104251375" modifier="pimgeek" title="$:/core/ui/TagTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\whitespace trim
+&lt;span class=&quot;tc-tag-list-item&quot;&gt;
+&lt;$set name=&quot;transclusion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=&quot;tid-name&quot; filter=&quot;[all[current]get[name]]&quot; value={{!!name}} emptyValue={{!!title}}&gt;
+&lt;$macrocall $name=&quot;tag-pill-body&quot; tag=&lt;&lt;tid-name&gt;&gt; icon={{!!icon}} colour={{!!color}} palette={{$:/palette}} element-tag=&quot;&quot;&quot;$button&quot;&quot;&quot; element-attributes=&quot;&quot;&quot;popup=&lt;&lt;qualify &quot;$:/state/popup/tag&quot;&gt;&gt; dragFilter='[all[current]tagging[]]' tag='span'&quot;&quot;&quot;/&gt;
+&lt;/$set&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/tag&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;below&quot; animate=&quot;yes&quot; class=&quot;tc-drop-down&quot;&gt;
+&lt;$set name=&quot;tv-show-missing-links&quot; value=&quot;yes&quot;&gt;
+&lt;$transclude tiddler=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
+&lt;/$set&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt; 
+&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; 
+&lt;/$list&gt;
+&lt;hr&gt;
+&lt;$macrocall $name=&quot;list-tagged-draggable&quot; tag=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
+&lt;/span&gt;
+</pre>
+</div>
 <div created="20191015074246381" creator="pimgeek" modified="20191020130248843" modifier="pimgeek" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>about</pre>
 </div>
@@ -13723,7 +13763,7 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191024025105843" creator="pimgeek" modified="20191024025131077" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191024104257607" creator="pimgeek" modified="20191024104300679" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -13738,7 +13778,7 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div list="about" title="$:/StoryList" revision="3" bag="default">
+<div created="20191024104303971" creator="pimgeek" list="disordered-information-blackhole-warning" modified="20191024104312476" modifier="pimgeek" title="$:/StoryList" revision="5" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13946,16 +13986,27 @@ exports.click = ClickListener;
 
 &lt;center&gt;&lt;img style=&quot;height:65vh;width:auto;&quot; src=&quot;https://pimfans.hintsnet.com/picgo/tutorial-block-webpage-sidebar-ads.gif&quot; /&gt;&lt;/center&gt;</pre>
 </div>
-<div created="20191023133418517" creator="pimgeek" modified="20191023134408060" modifier="pimgeek" name="无序信息黑洞预警！" tags="" title="disordered-information-blackhole-warning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191024051211259" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;centered&quot;&gt;
+
+&lt;/div&gt;</pre>
+</div>
+<div created="20191023133418517" creator="pimgeek" modified="20191024031440885" modifier="pimgeek" name="无序信息黑洞预警！" tags="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" title="disordered-information-blackhole-warning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+网上虽然有知识宝藏可挖，但也有刻意吸人眼球的垃圾信息。''若被这些垃圾信息吸引，很可能陷入思绪紊乱和内疚！''
+
+&lt;div class='centered'&gt;
 
 [img[https://pimfans.hintsnet.com/picgo/20191023213407.png]]
 
-''上网时请珍惜超链接的点击动作，千万别漫不经心''
+!!! 上网时请珍惜超链接的点击动作
+!! 千万不要漫不经心
 
-每多点一次，思维关注点就偏离一点，想做的事就耽搁一些…… 
+每多点一次，思维关注点就偏离一点，想做的事就耽搁一些…
 
-连续点 3~5 次以后，可能会迷失方向，陷入无序信息的黑洞！！</pre>
+连续点 3~5 次以后，可能会迷失方向，陷入无序信息的黑洞！！
+&lt;/div&gt;</pre>
 </div>
 <div created="20191021011135622" creator="pimgeek" modified="20191023141318889" modifier="pimgeek" name="如何改变 TiddlyWiki 站点的默认 CSS 样式?" tags="" title="how-to-change-default-css-style-of-a-tiddlywiki-site" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
@@ -13994,6 +14045,21 @@ exports.click = ClickListener;
 
 具体可参考 - https://tiddlywiki.com/#Tables%20in%20WikiText</pre>
 </div>
+<div created="20191024035820902" creator="pimgeek" modified="20191024051834700" modifier="pimgeek" name="如何进入心流体验?" tags="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" title="how-to-enter-flow-experience" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+[img[https://pimfans.hintsnet.com/picgo/20191024115807.png]]
+
+在完成任何一项任务的过程中，如果相对于自己当前的技能水平，任务的难度过高会引发焦虑的感受而无法专注；如果任务难度过低，会引发无聊的感受而无法专注。
+
+&lt;div class=&quot;centered&quot;&gt;
+
+!! 当任务难度比技能水平
+!! 稍微高一点时，最有可能专注
+!! @@background-color:#bbffbb;padding:5px 10px 5px 10px;border-radius:5px;''从而进入心流体验''@@
+
+&lt;/div&gt;</pre>
+</div>
 <div created="20191018154539340" creator="pimgeek" modified="20191022230647609" modifier="pimgeek" name="如何在 iOS 系统中利用 workflow App 自动生成 Anki 卡片?" tags="" title="how-to-generate-anki-card-automatically-with-ios-workflow-app" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
@@ -14013,9 +14079,12 @@ exports.click = ClickListener;
 <div created="20191022160725899" creator="pimgeek" modified="20191022230757576" modifier="pimgeek" name="pimgeek 自我介绍" title="pimgeek" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>用知识跨越时空界限, 建立互助连接</pre>
 </div>
-<div created="20191020152607678" creator="pimgeek" modified="20191023141344019" modifier="pimgeek" name="pimgeek 自定义站点 CSS 样式" tags="$:/tags/Stylesheet" title="pimgeek-customized-site-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191020152607678" creator="pimgeek" modified="20191024030725773" modifier="pimgeek" name="pimgeek 自定义站点 CSS 样式" tags="$:/tags/Stylesheet" title="pimgeek-customized-site-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>img {
  border-radius:10px;
+}
+.centered {
+ text-align: center;
 }
 .tc-titlebar {
  line-height:100% !important;
@@ -14068,7 +14137,16 @@ exports.click = ClickListener;
 |..|..|..|..|
 @@</pre>
 </div>
-<div created="20191020141247744" creator="pimgeek" modified="20191023143335834" modifier="pimgeek" name="分享一些 &quot;相见恨晚的知识&quot;" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191024080810453" creator="pimgeek" modified="20191024093402794" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+* 当前条目 --引用--&gt; $:/core/ui/ViewTemplate
+* $:/core/ui/ViewTemplate ==引用==&gt; $:/core/ui/ViewTemplate/tags
+* $:/core/ui/ViewTemplate/tags ==引用==&gt; $:/core/ui/TagTemplate
+* $:/core/ui/TagTemplate ==引用==&gt; $:/core/ui/ListItemTemplate
+* $:/core/ui/ListItemTemplate ==决定==&gt; 最初条目中的 Tag 链接如何显示</pre>
+</div>
+<div created="20191020141247744" creator="pimgeek" modified="20191024060045904" modifier="pimgeek" name="分享一些 &quot;相见恨晚的知识&quot;" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
 [img[https://pimfans.hintsnet.com/picgo/20191023220638.png]]
@@ -14081,7 +14159,7 @@ exports.click = ClickListener;
 
 可以说，如果没有那段知识分享陷入停滞的经历，就不会想到建立这样一个知识库。而既然知识库已经建起来了，第一个内容专题自然就是 “相见恨晚的知识”。
 
-&lt;$button to=&quot;about&quot;&gt;关于&lt;/$button&gt;</pre>
+下一条笔记：&lt;$button to=&quot;disordered-information-blackhole-warning&quot;&gt;小心无序信息的黑洞!&lt;/$button&gt;</pre>
 </div>
 <div created="20191016141702552" creator="pimgeek" modified="20191022231101555" modifier="pimgeek" name="什么是渐进式 JPG 图片?" tags="" title="what-is-progressive-jpg-image" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
