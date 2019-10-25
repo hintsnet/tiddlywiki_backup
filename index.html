@@ -143,11 +143,15 @@ Error message and password prompt
 
 <li>$:/.tb/modules/startup/hide-sidebar.js</li>
 
+<li>$:/centered-div-content-block</li>
+
 <li>$:/config/AnimationDuration</li>
 
 <li>$:/config/DefaultSidebarTab</li>
 
 <li>$:/config/HideSidebarOnStartup</li>
+
+<li>$:/config/Manager/Order</li>
 
 <li>$:/config/Manager/Sort</li>
 
@@ -159,7 +163,11 @@ Error message and password prompt
 
 <li>$:/config/NewJournal/Tags</li>
 
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/full-screen</li>
+
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
+
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/manager</li>
 
 <li>$:/config/Plugins/Disabled/$:/languages/zh-CN</li>
 
@@ -191,6 +199,8 @@ Error message and password prompt
 
 <li>$:/GitHub/Username</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/language</li>
@@ -199,6 +209,8 @@ Error message and password prompt
 
 <li>$:/languages/zh-Hans</li>
 
+<li>$:/login</li>
+
 <li>$:/palette</li>
 
 <li>$:/palettes/Blanca</li>
@@ -206,6 +218,10 @@ Error message and password prompt
 <li>$:/palettes/SolarizedLight</li>
 
 <li>$:/palettes/SpartanDay-pimgeek</li>
+
+<li>$:/pimgeek-customized-list-macro</li>
+
+<li>$:/pimgeek-customized-timeline-macro</li>
 
 <li>$:/plugins/danielo515/2click2edit</li>
 
@@ -217,7 +233,13 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Link/-921607903/search</li>
+
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab--1498284803</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -229,7 +251,11 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/advancedsearch</li>
+
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -251,7 +277,9 @@ Error message and password prompt
 
 <li>block-unwanted-webpage-ads-using-ublock-origin</li>
 
-<li>centered-div-content-block</li>
+<li>button-that-navigates-to-external-url</li>
+
+<li>button-that-navigates-to-internal-tiddler</li>
 
 <li>disordered-information-blackhole-warning</li>
 
@@ -265,17 +293,17 @@ Error message and password prompt
 
 <li>how-to-generate-anki-card-automatically-with-ios-workflow-app</li>
 
+<li>how-to-hide-a-tiddler-in-tiddlywiki</li>
+
 <li>how-to-understant-optimal-learning-percentage-15.87</li>
 
-<li>login</li>
+<li>iflytek-voice-input-method-for-windows</li>
 
 <li>name 字段</li>
 
 <li>pimgeek</li>
 
 <li>pimgeek-customized-site-css-style</li>
-
-<li>pimgeek-customized-timeline-macro</li>
 
 <li>pimgeek-preferred-km-software-shortcut-key-checklist</li>
 
@@ -328,6 +356,11 @@ exports.startup = function() {
 
 })();</pre>
 </div>
+<div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191024143931574" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="$:/centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;centered&quot;&gt;
+
+&lt;/div&gt;</pre>
+</div>
 <div created="20191015230604065" creator="pimgeek" modified="20191015230726962" modifier="pimgeek" title="$:/config/AnimationDuration" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>80</pre>
 </div>
@@ -337,10 +370,13 @@ exports.startup = function() {
 <div created="20151007165524815" creator="Tobias Beer" modified="20191020130226825" modifier="pimgeek" tags="" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20191022155304301" creator="pimgeek" modified="20191022155305835" modifier="pimgeek" title="$:/config/Manager/Sort" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>type</pre>
+<div created="20191024145500589" creator="pimgeek" modified="20191024145517726" modifier="pimgeek" title="$:/config/Manager/Order" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>reverse</pre>
 </div>
-<div created="20191022155224431" creator="pimgeek" modified="20191022155301772" modifier="pimgeek" title="$:/config/Manager/System" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191022155304301" creator="pimgeek" modified="20191024145512262" modifier="pimgeek" title="$:/config/Manager/Sort" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>modified</pre>
+</div>
+<div created="20191022155224431" creator="pimgeek" modified="20191024145641859" modifier="pimgeek" title="$:/config/Manager/System" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>system</pre>
 </div>
 <div created="20191019064753621" creator="pimgeek" modified="20191019064754826" modifier="pimgeek" title="$:/config/Navigation/UpdateAddressBar" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -352,8 +388,14 @@ exports.startup = function() {
 <div created="20191015230611324" creator="pimgeek" modified="20191015230618775" modifier="pimgeek" title="$:/config/NewJournal/Tags" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>日志</pre>
 </div>
+<div created="20191024145710262" creator="pimgeek" modified="20191024145711494" modifier="pimgeek" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/full-screen" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>show</pre>
+</div>
 <div created="20191016085012283" creator="pimgeek" modified="20191016092222772" modifier="pimgeek" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
+</div>
+<div created="20191024145650628" creator="pimgeek" modified="20191024145651860" modifier="pimgeek" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/manager" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>show</pre>
 </div>
 <div created="20191015082030060" creator="pimgeek" modified="20191015082031629" modifier="pimgeek" title="$:/config/Plugins/Disabled/$:/languages/zh-CN" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
@@ -9578,7 +9620,7 @@ exports.startup = function() {
 &lt;/$link&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20191024094036094" creator="pimgeek" modified="20191024104251375" modifier="pimgeek" title="$:/core/ui/TagTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191024094036094" creator="pimgeek" modified="20191024231455045" modifier="pimgeek" title="$:/core/ui/TagTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\whitespace trim
 &lt;span class=&quot;tc-tag-list-item&quot;&gt;
 &lt;$set name=&quot;transclusion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
@@ -9590,7 +9632,7 @@ exports.startup = function() {
 &lt;$transclude tiddler=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
 &lt;/$set&gt;
 &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt; 
-&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; 
+&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;sth
 &lt;/$list&gt;
 &lt;hr&gt;
 &lt;$macrocall $name=&quot;list-tagged-draggable&quot; tag=&lt;&lt;currentTiddler&gt;&gt;/&gt;
@@ -9613,6 +9655,16 @@ exports.startup = function() {
 </div>
 <div created="20191020140142501" creator="pimgeek" modified="20191020140145673" modifier="pimgeek" title="$:/GitHub/Username" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>pimgeek</pre>
+</div>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json" revision="3" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;customized&quot;
+        }
+    }
+}</pre>
 </div>
 <div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
@@ -13269,6 +13321,13 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20191016154037092" creator="pimgeek" modified="20191024144521712" modifier="pimgeek" name="登录入口" tags="" title="$:/login" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;centered&quot;&gt;
+
+! &lt;a href=&quot;https://wiki.hintsnet.com/login-basic&quot; target=&quot;_self&quot;&gt;点击这里登录&lt;/a&gt;
+
+&lt;/div&gt;</pre>
+</div>
 <div created="20191015081519139" creator="pimgeek" modified="20191015091049238" modifier="pimgeek" title="$:/palette" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/palettes/SpartanDay-pimgeek</pre>
 </div>
@@ -13601,6 +13660,141 @@ toolbar-done-button:
 untagged-background: &lt;&lt;colour very-muted-foreground&gt;&gt;
 very-muted-foreground: rgba(0, 0, 0, 0.12)</pre>
 </div>
+<div created="20191024232630395" creator="pimgeek" modified="20191025015201161" modifier="pimgeek" name="pimgeek 自定义 list macro" tags="$:/tags/Macro" title="$:/pimgeek-customized-list-macro" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre>\define list-links(filter,type:&quot;ul&quot;,subtype:&quot;li&quot;,class:&quot;&quot;,emptyMessage)
+\whitespace trim
+&lt;$type$ class=&quot;$class$&quot;&gt;
+&lt;$list filter=&quot;$filter$&quot; emptyMessage=&lt;&lt;__emptyMessage__&gt;&gt;&gt;
+&lt;$subtype$&gt;
+&lt;$link to={{!!title}}&gt;
+&lt;$transclude field=&quot;caption&quot;&gt;
+&lt;$view field=&quot;name&quot;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;/$view&gt;
+&lt;/$transclude&gt;
+&lt;/$link&gt;
+&lt;/$subtype$&gt;
+&lt;/$list&gt;
+&lt;/$type$&gt;
+\end
+
+\define list-links-draggable-drop-actions()
+&lt;$action-listops $tiddler=&lt;&lt;targetTiddler&gt;&gt; $field=&lt;&lt;targetField&gt;&gt; $subfilter=&quot;+[insertbefore:currentTiddler&lt;actionTiddler&gt;]&quot;/&gt;
+\end
+
+\define list-links-draggable(tiddler,field:&quot;list&quot;,type:&quot;ul&quot;,subtype:&quot;li&quot;,class:&quot;&quot;,itemTemplate)
+\whitespace trim
+&lt;span class=&quot;tc-links-draggable-list&quot;&gt;
+&lt;$vars targetTiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; targetField=&quot;&quot;&quot;$field$&quot;&quot;&quot;&gt;
+&lt;$type$ class=&quot;$class$&quot;&gt;
+&lt;$list filter=&quot;[list[$tiddler$!!$field$]]&quot;&gt;
+&lt;$droppable actions=&lt;&lt;list-links-draggable-drop-actions&gt;&gt; tag=&quot;&quot;&quot;$subtype$&quot;&quot;&quot;&gt;
+&lt;div class=&quot;tc-droppable-placeholder&quot;/&gt;
+&lt;div&gt;
+&lt;$transclude tiddler=&quot;&quot;&quot;$itemTemplate$&quot;&quot;&quot;&gt;
+&lt;$link to={{!!title}}&gt;
+&lt;$transclude field=&quot;caption&quot;&gt;
+&lt;$view field=&quot;name&quot;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;/$view&gt;
+&lt;/$transclude&gt;
+&lt;/$link&gt;
+&lt;/$transclude&gt;
+&lt;/div&gt;
+&lt;/$droppable&gt;
+&lt;/$list&gt;
+&lt;/$type$&gt;
+&lt;$tiddler tiddler=&quot;&quot;&gt;
+&lt;$droppable actions=&lt;&lt;list-links-draggable-drop-actions&gt;&gt; tag=&quot;div&quot;&gt;
+&lt;div class=&quot;tc-droppable-placeholder&quot;&gt;
+&amp;nbsp;
+&lt;/div&gt;
+&lt;div style=&quot;height:0.5em;&quot;/&gt;
+&lt;/$droppable&gt;
+&lt;/$tiddler&gt;
+&lt;/$vars&gt;
+&lt;/span&gt;
+\end
+
+\define list-tagged-draggable-drop-actions(tag)
+&lt;!-- Save the current ordering of the tiddlers with this tag --&gt;
+&lt;$set name=&quot;order&quot; filter=&quot;[&lt;__tag__&gt;tagging[]]&quot;&gt;
+&lt;!-- Remove any list-after or list-before fields from the tiddlers with this tag --&gt;
+&lt;$list filter=&quot;[&lt;__tag__&gt;tagging[]]&quot;&gt;
+&lt;$action-deletefield $field=&quot;list-before&quot;/&gt;
+&lt;$action-deletefield $field=&quot;list-after&quot;/&gt;
+&lt;/$list&gt;
+&lt;!-- Save the new order to the Tag Tiddler --&gt;
+&lt;$action-listops $tiddler=&lt;&lt;__tag__&gt;&gt; $field=&quot;list&quot; $filter=&quot;+[enlist&lt;order&gt;] +[insertbefore:currentTiddler&lt;actionTiddler&gt;]&quot;/&gt;
+&lt;!-- Make sure the newly added item has the right tag --&gt;
+&lt;!-- Removing this line makes dragging tags within the dropdown work as intended --&gt;
+&lt;!--&lt;$action-listops $tiddler=&lt;&lt;actionTiddler&gt;&gt; $tags=&lt;&lt;__tag__&gt;&gt;/&gt;--&gt;
+&lt;!-- Using the following 5 lines as replacement makes dragging titles from outside into the dropdown apply the tag --&gt;
+&lt;$list filter=&quot;[&lt;actionTiddler&gt;!contains:tags&lt;__tag__&gt;]&quot;&gt;
+&lt;$fieldmangler tiddler=&lt;&lt;actionTiddler&gt;&gt;&gt;
+&lt;$action-sendmessage $message=&quot;tm-add-tag&quot; $param=&lt;&lt;__tag__&gt;&gt;/&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+\end
+
+\define list-tagged-draggable(tag,subFilter,emptyMessage,itemTemplate,elementTag:&quot;div&quot;)
+\whitespace trim
+&lt;span class=&quot;tc-tagged-draggable-list&quot;&gt;
+&lt;$set name=&quot;tag&quot; value=&lt;&lt;__tag__&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;__tag__&gt;tagging[]$subFilter$]&quot; emptyMessage=&lt;&lt;__emptyMessage__&gt;&gt;&gt;
+&lt;$elementTag$ class=&quot;tc-menu-list-item&quot;&gt;
+&lt;$droppable actions=&quot;&quot;&quot;&lt;$macrocall $name=&quot;list-tagged-draggable-drop-actions&quot; tag=&lt;&lt;__tag__&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$elementTag$ class=&quot;tc-droppable-placeholder&quot;/&gt;
+&lt;$elementTag$&gt;
+&lt;$transclude tiddler=&quot;&quot;&quot;$itemTemplate$&quot;&quot;&quot;&gt;
+&lt;$link to={{!!title}}&gt;
+&lt;$view field=&quot;name&quot;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;/$view&gt;
+&lt;/$link&gt;
+&lt;/$transclude&gt;
+&lt;/$elementTag$&gt;
+&lt;/$droppable&gt;
+&lt;/$elementTag$&gt;
+&lt;/$list&gt;
+&lt;$tiddler tiddler=&quot;&quot;&gt;
+&lt;$droppable actions=&quot;&quot;&quot;&lt;$macrocall $name=&quot;list-tagged-draggable-drop-actions&quot; tag=&lt;&lt;__tag__&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$elementTag$ class=&quot;tc-droppable-placeholder&quot;/&gt;
+&lt;$elementTag$ style=&quot;height:0.5em;&quot;&gt;
+&lt;/$elementTag$&gt;
+&lt;/$droppable&gt;
+&lt;/$tiddler&gt;
+&lt;/$set&gt;
+&lt;/span&gt;
+\end
+</pre>
+</div>
+<div created="20191022223702170" creator="pimgeek" modified="20191024145936743" modifier="pimgeek" name="pimgeek 自定义时间线展示器 (Macro)" tags="$:/tags/Macro" title="$:/pimgeek-customized-timeline-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define timeline-title()
+&lt;!-- pimgeek customized timeline macro --&gt;
+&lt;$view field=&quot;name&quot;&gt;
+&lt;$view field=&quot;title&quot;&gt;
+&lt;/$view&gt;
+\end
+\define timeline(limit:&quot;100&quot;,format:&quot;DDth MMM YYYY&quot;,subfilter:&quot;&quot;,dateField:&quot;modified&quot;)
+&lt;div class=&quot;tc-timeline&quot;&gt;
+&lt;$list filter=&quot;[!is[system]$subfilter$has[$dateField$]!sort[$dateField$]limit[$limit$]eachday[$dateField$]]&quot;&gt;
+&lt;div class=&quot;tc-menu-list-item&quot;&gt;
+&lt;$view field=&quot;$dateField$&quot; format=&quot;date&quot; template=&quot;$format$&quot;/&gt;
+&lt;$list filter=&quot;[sameday:$dateField${!!$dateField$}!is[system]$subfilter$!sort[$dateField$]]&quot;&gt;
+&lt;div class=&quot;tc-menu-list-subitem&quot;&gt;
+&lt;$link to={{!!title}}&gt;
+&lt;&lt;timeline-title&gt;&gt;
+&lt;/$link&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+\end
+</pre>
+</div>
 <div author="Danielo Rodriguez" core-version="&gt;=5.1.0" created="20191015225544067" dependents="" description="double click to edit tiddlers" list="readme" modified="20191015225544067" plugin-type="plugin" source="https://github.com/danielo515/TW5-2click2edit" title="$:/plugins/danielo515/2click2edit" type="application/json" version="0.1" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -13763,8 +13957,17 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191024104257607" creator="pimgeek" modified="20191024104300679" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191025015447645" creator="pimgeek" modified="20191025015505238" modifier="pimgeek" title="$:/state/Link/-921607903/search" revision="25" bag="default">
+<pre></pre>
+</div>
+<div created="20191025014651770" creator="pimgeek" modified="20191025014653668" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20191025015322440" creator="pimgeek" modified="20191025015323377" modifier="pimgeek" title="$:/state/tab--1498284803" revision="2" bag="default">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
+</div>
+<div created="20191025015206736" creator="pimgeek" modified="20191025015327346" modifier="pimgeek" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>no</pre>
@@ -13778,8 +13981,11 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div created="20191024104303971" creator="pimgeek" list="disordered-information-blackhole-warning" modified="20191024104312476" modifier="pimgeek" title="$:/StoryList" revision="5" bag="default">
+<div created="20191025014709983" creator="pimgeek" list="about" modified="20191025015621859" modifier="pimgeek" title="$:/StoryList" revision="29" bag="default">
 <pre></pre>
+</div>
+<div created="20191025014843832" creator="pimgeek" modified="20191025015513636" modifier="pimgeek" title="$:/temp/advancedsearch" revision="30" bag="default">
+<pre>pimgeek</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
 <pre>{
@@ -13826,11 +14032,11 @@ exports.click = ClickListener;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1366&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;768&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -13838,6 +14044,9 @@ exports.click = ClickListener;
         }
     }
 }</pre>
+</div>
+<div created="20191025014838075" creator="pimgeek" modified="20191025014843833" modifier="pimgeek" title="$:/temp/search" revision="15" bag="default">
+<pre></pre>
 </div>
 <div created="20191015083037292" creator="pimgeek" modified="20191020151359206" modifier="pimgeek" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -13986,10 +14195,14 @@ exports.click = ClickListener;
 
 &lt;center&gt;&lt;img style=&quot;height:65vh;width:auto;&quot; src=&quot;https://pimfans.hintsnet.com/picgo/tutorial-block-webpage-sidebar-ads.gif&quot; /&gt;&lt;/center&gt;</pre>
 </div>
-<div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191024051211259" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;div class=&quot;centered&quot;&gt;
-
-&lt;/div&gt;</pre>
+<div caption="指向外部 URL 的按钮" created="20191024225330670" creator="pimgeek" modified="20191024225641237" modifier="pimgeek" name="指向外部 URL 的按钮" tags="$:/tags/TextEditor/Snippet" title="button-that-navigates-to-external-url" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-open-external-window&quot; $param=&quot;URL&quot; /&gt;
+按钮文本
+&lt;/$button&gt;</pre>
+</div>
+<div caption="指向内部条目的按钮" created="20191024225710315" creator="pimgeek" modified="20191024225839818" modifier="pimgeek" name="指向内部条目的按钮" tags="$:/tags/TextEditor/Snippet" title="button-that-navigates-to-internal-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$button to=&quot;条目 title&quot;&gt;按钮文本&lt;/$button&gt;</pre>
 </div>
 <div created="20191023133418517" creator="pimgeek" modified="20191024031440885" modifier="pimgeek" name="无序信息黑洞预警！" tags="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" title="disordered-information-blackhole-warning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
@@ -14065,19 +14278,43 @@ exports.click = ClickListener;
 
 &lt;video class=&quot;centered&quot; preload=&quot;none&quot; controls=&quot;controls&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;&amp;lt;!– MP4 must be first for iPad! –&amp;gt;&lt;source src=&quot;https://pimfans.oss-cn-beijing.aliyuncs.com/hintsnet/tw_files/workflow-for-anki-card-automation.mp4&quot; type=&quot;video/mp4&quot;&gt;&amp;lt;!– WebKit video –&amp;gt;&lt;/video&gt;</pre>
 </div>
+<div created="20191024144036034" creator="pimgeek" modified="20191024144300572" modifier="pimgeek" name="在 TiddlyWiki 中, 如何隐藏一个条目?" tags="" title="how-to-hide-a-tiddler-in-tiddlywiki" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+修改条目的标题，使它以 `$:/` 开头即可，此条目会被当作系统条目隐藏起来。
+
+具体可参考 - https://tiddlywiki.com/#Simple%20ways%20to%20write%20protect%20tiddlers</pre>
+</div>
 <div created="20191022121036015" creator="pimgeek" modified="20191023102049174" modifier="pimgeek" name="如何理解最优学习百分比 (15.87%) ?" tags="" title="how-to-understant-optimal-learning-percentage-15.87" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
 最优学习百分比</pre>
 </div>
-<div created="20191016154037092" creator="pimgeek" modified="20191016230127211" modifier="pimgeek" tags="" title="login" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;a href=&quot;https://wiki.hintsnet.com/login-basic&quot; target=&quot;_self&quot;&gt;login here&lt;/a&gt;</pre>
+<div created="20191024152212541" creator="pimgeek" modified="20191024225546029" modifier="pimgeek" name="讯飞输入法 Windows 版" tags="" title="iflytek-voice-input-method-for-windows" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+[img width=200 [https://pimfans.hintsnet.com/qna/171215/llJk1I4me0.png?imageslim/.png]]
+
+&lt;iframe width=500 height=400 src=&quot;//player.bilibili.com/player.html?aid=13225165&amp;cid=21686793&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-open-external-window&quot; $param=&quot;https://hintsnet.com/pimgeek/2017/08/11/iflytek-input-method-for-windows-you-should-have-it/&quot; /&gt;
+深入阅读...
+&lt;/$button&gt;</pre>
 </div>
 <div caption="name 字段" created="20191023032115214" creator="pimgeek" modified="20191023102024905" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="name 字段" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;</pre>
 </div>
-<div created="20191022160725899" creator="pimgeek" modified="20191022230757576" modifier="pimgeek" name="pimgeek 自我介绍" title="pimgeek" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>用知识跨越时空界限, 建立互助连接</pre>
+<div created="20191022160725899" creator="pimgeek" modified="20191024152115152" modifier="pimgeek" name="pimgeek 自我介绍" title="pimgeek" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+[img[https://hintsnet.com/pimgeek/wp-content/uploads/2017/06/cropped-pimgeek-avatar.jpg]]
+
+pimgeek — [[集智俱乐部|http://www.swarma.org/]] 核心志愿者，现任 [[注意力与知识管理微信群|http://wiki.swarma.net/index.php/%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%BE%A4]] 群主，个人笔记信息管理专家，百科知识爱好者，擅长用电脑和手机搞定笔记管理，思维导图，概念图，启发信息网络图等（详见 [[本站文集内容|https://hintsnet.com/pimgeek/blog/]]）。
+
+----
+
+用知识跨越时空界限, 建立互助连接</pre>
 </div>
 <div created="20191020152607678" creator="pimgeek" modified="20191024030725773" modifier="pimgeek" name="pimgeek 自定义站点 CSS 样式" tags="$:/tags/Stylesheet" title="pimgeek-customized-site-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>img {
@@ -14101,29 +14338,6 @@ exports.click = ClickListener;
  border-radius:12px !important;
 }</pre>
 </div>
-<div created="20191022223702170" creator="pimgeek" modified="20191022230132063" modifier="pimgeek" name="pimgeek 自定义时间线展示器 (Macro)" tags="$:/tags/Macro" title="pimgeek-customized-timeline-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>\define timeline-title()
-&lt;!-- pimgeek customized timeline macro --&gt;
-&lt;$view field=&quot;name&quot;/&gt;
-\end
-\define timeline(limit:&quot;100&quot;,format:&quot;DDth MMM YYYY&quot;,subfilter:&quot;&quot;,dateField:&quot;modified&quot;)
-&lt;div class=&quot;tc-timeline&quot;&gt;
-&lt;$list filter=&quot;[!is[system]$subfilter$has[$dateField$]!sort[$dateField$]limit[$limit$]eachday[$dateField$]]&quot;&gt;
-&lt;div class=&quot;tc-menu-list-item&quot;&gt;
-&lt;$view field=&quot;$dateField$&quot; format=&quot;date&quot; template=&quot;$format$&quot;/&gt;
-&lt;$list filter=&quot;[sameday:$dateField${!!$dateField$}!is[system]$subfilter$!sort[$dateField$]]&quot;&gt;
-&lt;div class=&quot;tc-menu-list-subitem&quot;&gt;
-&lt;$link to={{!!title}}&gt;
-&lt;&lt;timeline-title&gt;&gt;
-&lt;/$link&gt;
-&lt;/div&gt;
-&lt;/$list&gt;
-&lt;/div&gt;
-&lt;/$list&gt;
-&lt;/div&gt;
-\end
-</pre>
-</div>
 <div created="20191021024856016" creator="pimgeek" modified="20191022230818206" modifier="pimgeek" name="pimgeek 偏好的 KM 软件快捷键检查列表" tags="" title="pimgeek-preferred-km-software-shortcut-key-checklist" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
@@ -14137,17 +14351,18 @@ exports.click = ClickListener;
 |..|..|..|..|
 @@</pre>
 </div>
-<div created="20191024080810453" creator="pimgeek" modified="20191024093402794" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191024080810453" creator="pimgeek" modified="20191025015638848" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
 * 当前条目 --引用--&gt; $:/core/ui/ViewTemplate
 * $:/core/ui/ViewTemplate ==引用==&gt; $:/core/ui/ViewTemplate/tags
 * $:/core/ui/ViewTemplate/tags ==引用==&gt; $:/core/ui/TagTemplate
 * $:/core/ui/TagTemplate ==引用==&gt; $:/core/ui/ListItemTemplate
-* $:/core/ui/ListItemTemplate ==决定==&gt; 最初条目中的 Tag 链接如何显示</pre>
+* $:/core/ui/ListItemTemplate ==决定==&gt; 最初条目中的 Tag 链接如何显示
+* [[$:/pimgeek-customized-list-macro]] ==决定==&gt; Tag 下拉列表的显示方式</pre>
 </div>
-<div created="20191020141247744" creator="pimgeek" modified="20191024060045904" modifier="pimgeek" name="分享一些 &quot;相见恨晚的知识&quot;" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>! &lt;$view field=&quot;name&quot; /&gt;
+<div created="20191020141247744" creator="pimgeek" modified="20191024225851818" modifier="pimgeek" name="相见恨晚的知识" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! 分享一些 &quot;&lt;$view field=&quot;name&quot; /&gt;&quot;
 
 [img[https://pimfans.hintsnet.com/picgo/20191023220638.png]]
 
