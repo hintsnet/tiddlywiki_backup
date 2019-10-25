@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/.tb/modules/startup/hide-sidebar.js</li>
 
+<li>$:/.tb/ui/AdvancedSearch/Field</li>
+
 <li>$:/centered-div-content-block</li>
 
 <li>$:/config/AnimationDuration</li>
@@ -152,6 +154,8 @@ Error message and password prompt
 <li>$:/config/HideSidebarOnStartup</li>
 
 <li>$:/config/Manager/Order</li>
+
+<li>$:/config/Manager/Show</li>
 
 <li>$:/config/Manager/Sort</li>
 
@@ -185,6 +189,12 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/modules/widgets/navigator.js</li>
+
+<li>$:/core/ui/Actions/new-tiddler</li>
+
+<li>$:/core/ui/Buttons/new-here</li>
+
 <li>$:/core/ui/ListItemTemplate</li>
 
 <li>$:/core/ui/TagTemplate</li>
@@ -198,8 +208,6 @@ Error message and password prompt
 <li>$:/GitHub/Repo</li>
 
 <li>$:/GitHub/Username</li>
-
-<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
@@ -233,13 +241,9 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Link/-921607903/search</li>
+<li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
-
-<li>$:/state/tab--1498284803</li>
-
-<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -254,8 +258,6 @@ Error message and password prompt
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -286,6 +288,8 @@ Error message and password prompt
 <li>how-to-change-default-css-style-of-a-tiddlywiki-site</li>
 
 <li>how-to-config-tiddlywiki-to-hide-sidebar-by-default</li>
+
+<li>how-to-convert-html-source-to-tiddlywiki-text</li>
 
 <li>how-to-create-table-in-tiddlywiki-tiddlers</li>
 
@@ -356,6 +360,56 @@ exports.startup = function() {
 
 })();</pre>
 </div>
+<div caption="In Fields" created="20141231095518178" creator="Tobias Beer" list-before="$:/core/ui/AdvancedSearch/Filter" modified="20191025053408581" modifier="pimgeek" tags="$:/tags/AdvancedSearch" title="$:/.tb/ui/AdvancedSearch/Field" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define searchInField(field, for, ci)
+&lt;$list filter=&quot;[!is[shadow]!is[system]regexp:$field$[$for$$ci$]limit[1]]&quot;&gt;
+&lt;dt&gt;$field$&lt;/dt&gt;
+&lt;/$list&gt;
+
+&lt;$list filter=&quot;[!is[shadow]!is[system]regexp:$field$[$for$$ci$]]&quot;&gt;
+&lt;dd&gt;&lt;$link&gt;&lt;$view field=&quot;name&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;&lt;/$link&gt;&lt;/dd&gt;
+&lt;/$list&gt;
+\end
+
+&lt;style&gt;.tc-advanced-search-check imput {width:auto !important;}&lt;/style&gt;
+
+在指定字段中搜索... &amp;nbsp; &lt;span class=&quot;tc-advanced-search-check&quot;&gt;&lt;$checkbox field=&quot;case-insensitive&quot; tiddler=&quot;$:/temp/advancedsearch&quot; checked=&quot;(?i)&quot;&gt; 不区分大小写&lt;/$checkbox&gt;&lt;/span&gt;
+
+&lt;div class=&quot;tc-search&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/advancedsearch&quot; type=&quot;search&quot; tag=&quot;input&quot;/&gt;
+&lt;$select field=&quot;field&quot; tiddler=&quot;$:/temp/advancedsearch&quot; default=&quot;text&quot;&gt;
+&lt;option value=&quot;&quot;&gt;*any&lt;/option&gt;
+&lt;$list filter=&quot;[!is[shadow]!is[system]fields[]sort[]]&quot; variable=&quot;field&quot;&gt;
+&lt;option value=&lt;&lt;field&gt;&gt;&gt;&lt;&lt;field&gt;&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;$reveal state=&quot;$:/temp/advancedsearch&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/advancedsearch&quot; $field=&quot;text&quot; $value=&quot;&quot;/&gt;
+{{$:/core/images/close-button}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+
+&lt;$reveal state=&quot;$:/temp/advancedsearch&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$reveal state=&quot;$:/temp/advancedsearch!!field&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
+&lt;dl&gt;
+&lt;$list filter=&quot;[!is[shadow]!is[system]fields[]]&quot; variable=&quot;field&quot;&gt;
+
+&lt;$reveal type=nomatch text=text default=&lt;&lt;field&gt;&gt;&gt;
+&lt;$macrocall $name=&quot;searchInField&quot; field=&lt;&lt;field&gt;&gt; for={{$:/temp/advancedsearch}} ci={{$:/temp/advancedsearch!!case-insensitive}}/&gt;
+&lt;/$reveal&gt;
+&lt;/$list&gt;
+&lt;/dl&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&quot;$:/temp/advancedsearch!!field&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+
+&lt;dl&gt;
+&lt;$macrocall $name=&quot;searchInField&quot; field={{$:/temp/advancedsearch!!field}} for={{$:/temp/advancedsearch}} ci={{$:/temp/advancedsearch!!case-insensitive}}/&gt;
+&lt;/dl&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;</pre>
+</div>
 <div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191024143931574" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="$:/centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;centered&quot;&gt;
 
@@ -373,10 +427,13 @@ exports.startup = function() {
 <div created="20191024145500589" creator="pimgeek" modified="20191024145517726" modifier="pimgeek" title="$:/config/Manager/Order" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>reverse</pre>
 </div>
+<div created="20191025202021129" creator="pimgeek" modified="20191025202023962" modifier="pimgeek" title="$:/config/Manager/Show" revision="2" bag="default">
+<pre>tiddlers</pre>
+</div>
 <div created="20191022155304301" creator="pimgeek" modified="20191024145512262" modifier="pimgeek" title="$:/config/Manager/Sort" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>modified</pre>
 </div>
-<div created="20191022155224431" creator="pimgeek" modified="20191024145641859" modifier="pimgeek" title="$:/config/Manager/System" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191022155224431" creator="pimgeek" modified="20191025202027242" modifier="pimgeek" title="$:/config/Manager/System" type="text/vnd.tiddlywiki" revision="4" bag="default">
 <pre>system</pre>
 </div>
 <div created="20191019064753621" creator="pimgeek" modified="20191019064754826" modifier="pimgeek" title="$:/config/Navigation/UpdateAddressBar" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -9611,6 +9668,669 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20191025195846596" creator="pimgeek" modified="20191025200009453" modifier="pimgeek" module-type="widget" title="$:/core/modules/widgets/navigator.js" type="application/javascript" revision="0" bag="default">
+<pre>/*\
+title: $:/core/modules/widgets/navigator.js
+type: application/javascript
+module-type: widget
+
+Navigator widget
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+var IMPORT_TITLE = &quot;$:/Import&quot;;
+
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
+var NavigatorWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+	this.addEventListeners([
+		{type: &quot;tm-navigate&quot;, handler: &quot;handleNavigateEvent&quot;},
+		{type: &quot;tm-edit-tiddler&quot;, handler: &quot;handleEditTiddlerEvent&quot;},
+		{type: &quot;tm-delete-tiddler&quot;, handler: &quot;handleDeleteTiddlerEvent&quot;},
+		{type: &quot;tm-save-tiddler&quot;, handler: &quot;handleSaveTiddlerEvent&quot;},
+		{type: &quot;tm-cancel-tiddler&quot;, handler: &quot;handleCancelTiddlerEvent&quot;},
+		{type: &quot;tm-close-tiddler&quot;, handler: &quot;handleCloseTiddlerEvent&quot;},
+		{type: &quot;tm-close-all-tiddlers&quot;, handler: &quot;handleCloseAllTiddlersEvent&quot;},
+		{type: &quot;tm-close-other-tiddlers&quot;, handler: &quot;handleCloseOtherTiddlersEvent&quot;},
+		{type: &quot;tm-new-tiddler&quot;, handler: &quot;handleNewTiddlerEvent&quot;},
+		{type: &quot;tm-import-tiddlers&quot;, handler: &quot;handleImportTiddlersEvent&quot;},
+		{type: &quot;tm-perform-import&quot;, handler: &quot;handlePerformImportEvent&quot;},
+		{type: &quot;tm-fold-tiddler&quot;, handler: &quot;handleFoldTiddlerEvent&quot;},
+		{type: &quot;tm-fold-other-tiddlers&quot;, handler: &quot;handleFoldOtherTiddlersEvent&quot;},
+		{type: &quot;tm-fold-all-tiddlers&quot;, handler: &quot;handleFoldAllTiddlersEvent&quot;},
+		{type: &quot;tm-unfold-all-tiddlers&quot;, handler: &quot;handleUnfoldAllTiddlersEvent&quot;},
+		{type: &quot;tm-rename-tiddler&quot;, handler: &quot;handleRenameTiddlerEvent&quot;}
+	]);
+};
+
+/*
+Inherit from the base widget class
+*/
+NavigatorWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+NavigatorWidget.prototype.render = function(parent,nextSibling) {
+	this.parentDomNode = parent;
+	this.computeAttributes();
+	this.execute();
+	this.renderChildren(parent,nextSibling);
+};
+
+/*
+Compute the internal state of the widget
+*/
+NavigatorWidget.prototype.execute = function() {
+	// Get our parameters
+	this.storyTitle = this.getAttribute(&quot;story&quot;);
+	this.historyTitle = this.getAttribute(&quot;history&quot;);
+	this.setVariable(&quot;tv-story-list&quot;,this.storyTitle);
+	this.setVariable(&quot;tv-history-list&quot;,this.historyTitle);
+	// Construct the child widgets
+	this.makeChildWidgets();
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+NavigatorWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedAttributes.story || changedAttributes.history) {
+		this.refreshSelf();
+		return true;
+	} else {
+		return this.refreshChildren(changedTiddlers);
+	}
+};
+
+NavigatorWidget.prototype.getStoryList = function() {
+	return this.storyTitle ? this.wiki.getTiddlerList(this.storyTitle) : null;
+};
+
+NavigatorWidget.prototype.saveStoryList = function(storyList) {
+	if(this.storyTitle) {
+		var storyTiddler = this.wiki.getTiddler(this.storyTitle);
+		this.wiki.addTiddler(new $tw.Tiddler(
+			{title: this.storyTitle},
+			storyTiddler,
+			{list: storyList}
+		));		
+	}
+};
+
+NavigatorWidget.prototype.removeTitleFromStory = function(storyList,title) {
+	if(storyList) {
+		var p = storyList.indexOf(title);
+		while(p !== -1) {
+			storyList.splice(p,1);
+			p = storyList.indexOf(title);
+		}		
+	}
+};
+
+NavigatorWidget.prototype.replaceFirstTitleInStory = function(storyList,oldTitle,newTitle) {
+	if(storyList) {
+		var pos = storyList.indexOf(oldTitle);
+		if(pos !== -1) {
+			storyList[pos] = newTitle;
+			do {
+				pos = storyList.indexOf(oldTitle,pos + 1);
+				if(pos !== -1) {
+					storyList.splice(pos,1);
+				}
+			} while(pos !== -1);
+		} else {
+			storyList.splice(0,0,newTitle);
+		}		
+	}
+};
+
+NavigatorWidget.prototype.addToStory = function(title,fromTitle) {
+	if(this.storyTitle) {
+		this.wiki.addToStory(title,fromTitle,this.storyTitle,{
+			openLinkFromInsideRiver: this.getAttribute(&quot;openLinkFromInsideRiver&quot;,&quot;top&quot;),
+			openLinkFromOutsideRiver: this.getAttribute(&quot;openLinkFromOutsideRiver&quot;,&quot;top&quot;)
+		});
+	}
+};
+
+/*
+Add a new record to the top of the history stack
+title: a title string or an array of title strings
+fromPageRect: page coordinates of the origin of the navigation
+*/
+NavigatorWidget.prototype.addToHistory = function(title,fromPageRect) {
+	this.wiki.addToHistory(title,fromPageRect,this.historyTitle);
+};
+
+/*
+Handle a tm-navigate event
+*/
+NavigatorWidget.prototype.handleNavigateEvent = function(event) {
+	event = $tw.hooks.invokeHook(&quot;th-navigating&quot;,event);
+	if(event.navigateTo) {
+		this.addToStory(event.navigateTo,event.navigateFromTitle);
+		if(!event.navigateSuppressNavigation) {
+			this.addToHistory(event.navigateTo,event.navigateFromClientRect);
+		}
+	}
+	return false;
+};
+
+// Close a specified tiddler
+NavigatorWidget.prototype.handleCloseTiddlerEvent = function(event) {
+	var title = event.param || event.tiddlerTitle,
+		storyList = this.getStoryList();
+	// Look for tiddlers with this title to close
+	this.removeTitleFromStory(storyList,title);
+	this.saveStoryList(storyList);
+	return false;
+};
+
+// Close all tiddlers
+NavigatorWidget.prototype.handleCloseAllTiddlersEvent = function(event) {
+	this.saveStoryList([]);
+	return false;
+};
+
+// Close other tiddlers
+NavigatorWidget.prototype.handleCloseOtherTiddlersEvent = function(event) {
+	var title = event.param || event.tiddlerTitle;
+	this.saveStoryList([title]);
+	return false;
+};
+
+// Place a tiddler in edit mode
+NavigatorWidget.prototype.handleEditTiddlerEvent = function(event) {
+	var editTiddler = $tw.hooks.invokeHook(&quot;th-editing-tiddler&quot;,event);
+	if(!editTiddler) {
+		return false;
+	}
+	var self = this;
+	function isUnmodifiedShadow(title) {
+		return self.wiki.isShadowTiddler(title) &amp;&amp; !self.wiki.tiddlerExists(title);
+	}
+	function confirmEditShadow(title) {
+		return confirm($tw.language.getString(
+			&quot;ConfirmEditShadowTiddler&quot;,
+			{variables:
+				{title: title}
+			}
+		));
+	}
+	var title = event.param || event.tiddlerTitle;
+	if(isUnmodifiedShadow(title) &amp;&amp; !confirmEditShadow(title)) {
+		return false;
+	}
+	// Replace the specified tiddler with a draft in edit mode
+	var draftTiddler = this.makeDraftTiddler(title);
+	// Update the story and history if required
+	if(!event.paramObject || event.paramObject.suppressNavigation !== &quot;yes&quot;) {
+		var draftTitle = draftTiddler.fields.title,
+			storyList = this.getStoryList();
+		this.removeTitleFromStory(storyList,draftTitle);
+		this.replaceFirstTitleInStory(storyList,title,draftTitle);
+		this.addToHistory(draftTitle,event.navigateFromClientRect);
+		this.saveStoryList(storyList);
+		return false;
+	}
+};
+
+// Delete a tiddler
+NavigatorWidget.prototype.handleDeleteTiddlerEvent = function(event) {
+	// Get the tiddler we're deleting
+	var title = event.param || event.tiddlerTitle,
+		tiddler = this.wiki.getTiddler(title),
+		storyList = this.getStoryList(),
+		originalTitle = tiddler ? tiddler.fields[&quot;draft.of&quot;] : &quot;&quot;,
+		originalTiddler = originalTitle ? this.wiki.getTiddler(originalTitle) : undefined,
+		confirmationTitle;
+	if(!tiddler) {
+		return false;
+	}
+	// Check if the tiddler we're deleting is in draft mode
+	if(originalTitle) {
+		// If so, we'll prompt for confirmation referencing the original tiddler
+		confirmationTitle = originalTitle;
+	} else {
+		// If not a draft, then prompt for confirmation referencing the specified tiddler
+		confirmationTitle = title;
+	}
+	// Seek confirmation
+	if((this.wiki.getTiddler(originalTitle) || (tiddler.fields.text || &quot;&quot;) !== &quot;&quot;) &amp;&amp; !confirm($tw.language.getString(
+				&quot;ConfirmDeleteTiddler&quot;,
+				{variables:
+					{title: confirmationTitle}
+				}
+			))) {
+		return false;
+	}
+	// Delete the original tiddler
+	if(originalTitle) {
+		if(originalTiddler) {
+			$tw.hooks.invokeHook(&quot;th-deleting-tiddler&quot;,originalTiddler);
+		}
+		this.wiki.deleteTiddler(originalTitle);
+		this.removeTitleFromStory(storyList,originalTitle);
+	}
+	// Invoke the hook function and delete this tiddler
+	$tw.hooks.invokeHook(&quot;th-deleting-tiddler&quot;,tiddler);
+	this.wiki.deleteTiddler(title);
+	// Remove the closed tiddler from the story
+	this.removeTitleFromStory(storyList,title);
+	this.saveStoryList(storyList);
+	// Trigger an autosave
+	$tw.rootWidget.dispatchEvent({type: &quot;tm-auto-save-wiki&quot;});
+	return false;
+};
+
+/*
+Create/reuse the draft tiddler for a given title
+*/
+NavigatorWidget.prototype.makeDraftTiddler = function(targetTitle) {
+	// See if there is already a draft tiddler for this tiddler
+	var draftTitle = this.wiki.findDraft(targetTitle);
+	if(draftTitle) {
+		return this.wiki.getTiddler(draftTitle);
+	}
+	// Get the current value of the tiddler we're editing
+	var tiddler = this.wiki.getTiddler(targetTitle);
+	// Save the initial value of the draft tiddler
+	draftTitle = this.generateDraftTitle(targetTitle);
+	var draftTiddler;
+	if (typeof(tiddler) != 'undefined') {
+		draftTiddler = new $tw.Tiddler(
+			tiddler,
+			{
+				title: draftTitle,
+				&quot;draft.title&quot;: targetTitle,
+				&quot;draft.of&quot;: targetTitle
+			},
+			this.wiki.getModificationFields()
+		);
+	} else {
+			var default_text = '! &lt;$view field=&quot;name&quot;/&gt;';
+		draftTiddler = new $tw.Tiddler(
+			tiddler,
+			{
+				title: draftTitle,
+				text: default_text,
+				&quot;draft.title&quot;: targetTitle,
+				&quot;draft.of&quot;: targetTitle
+			},
+			this.wiki.getModificationFields()
+		);
+
+	}
+	this.wiki.addTiddler(draftTiddler);
+	return draftTiddler;
+};
+
+/*
+Generate a title for the draft of a given tiddler
+*/
+NavigatorWidget.prototype.generateDraftTitle = function(title) {
+	return this.wiki.generateDraftTitle(title);
+};
+
+// Take a tiddler out of edit mode, saving the changes
+NavigatorWidget.prototype.handleSaveTiddlerEvent = function(event) {
+	var title = event.param || event.tiddlerTitle,
+		tiddler = this.wiki.getTiddler(title),
+		storyList = this.getStoryList();
+	// Replace the original tiddler with the draft
+	if(tiddler) {
+		var draftTitle = (tiddler.fields[&quot;draft.title&quot;] || &quot;&quot;).trim(),
+			draftOf = (tiddler.fields[&quot;draft.of&quot;] || &quot;&quot;).trim();
+		if(draftTitle) {
+			var isRename = draftOf !== draftTitle,
+				isConfirmed = true;
+			if(isRename &amp;&amp; this.wiki.tiddlerExists(draftTitle)) {
+				isConfirmed = confirm($tw.language.getString(
+					&quot;ConfirmOverwriteTiddler&quot;,
+					{variables:
+						{title: draftTitle}
+					}
+				));
+			}
+			if(isConfirmed) {
+				// Create the new tiddler and pass it through the th-saving-tiddler hook
+				var newTiddler = new $tw.Tiddler(this.wiki.getCreationFields(),tiddler,{
+					title: draftTitle,
+					&quot;draft.title&quot;: undefined,
+					&quot;draft.of&quot;: undefined
+				},this.wiki.getModificationFields());
+				newTiddler = $tw.hooks.invokeHook(&quot;th-saving-tiddler&quot;,newTiddler);
+				this.wiki.addTiddler(newTiddler);
+				// If enabled, relink references to renamed tiddler
+				var shouldRelink = this.getAttribute(&quot;relinkOnRename&quot;,&quot;no&quot;).toLowerCase().trim() === &quot;yes&quot;;
+				if(isRename &amp;&amp; shouldRelink &amp;&amp; this.wiki.tiddlerExists(draftOf)) {
+console.log(&quot;Relinking '&quot; + draftOf + &quot;' to '&quot; + draftTitle + &quot;'&quot;);
+					this.wiki.relinkTiddler(draftOf,draftTitle);
+				}
+				// Remove the draft tiddler
+				this.wiki.deleteTiddler(title);
+				// Remove the original tiddler if we're renaming it
+				if(isRename) {
+					this.wiki.deleteTiddler(draftOf);
+				}
+				// #2381 always remove new title &amp; old
+				this.removeTitleFromStory(storyList,draftTitle);
+				this.removeTitleFromStory(storyList,draftOf);
+				if(!event.paramObject || event.paramObject.suppressNavigation !== &quot;yes&quot;) {
+					// Replace the draft in the story with the original
+					this.replaceFirstTitleInStory(storyList,title,draftTitle);
+					this.addToHistory(draftTitle,event.navigateFromClientRect);
+					if(draftTitle !== this.storyTitle) {
+						this.saveStoryList(storyList);
+					}
+				}
+				// Trigger an autosave
+				$tw.rootWidget.dispatchEvent({type: &quot;tm-auto-save-wiki&quot;});
+			}
+		}
+	}
+	return false;
+};
+
+// Take a tiddler out of edit mode without saving the changes
+NavigatorWidget.prototype.handleCancelTiddlerEvent = function(event) {
+	event = $tw.hooks.invokeHook(&quot;th-cancelling-tiddler&quot;, event);
+	// Flip the specified tiddler from draft back to the original
+	var draftTitle = event.param || event.tiddlerTitle,
+		draftTiddler = this.wiki.getTiddler(draftTitle),
+		originalTitle = draftTiddler &amp;&amp; draftTiddler.fields[&quot;draft.of&quot;];
+	if(draftTiddler &amp;&amp; originalTitle) {
+		// Ask for confirmation if the tiddler text has changed
+		var isConfirmed = true,
+			originalTiddler = this.wiki.getTiddler(originalTitle),
+			storyList = this.getStoryList();
+		if(this.wiki.isDraftModified(draftTitle)) {
+			isConfirmed = confirm($tw.language.getString(
+				&quot;ConfirmCancelTiddler&quot;,
+				{variables:
+					{title: draftTitle}
+				}
+			));
+		}
+		// Remove the draft tiddler
+		if(isConfirmed) {
+			this.wiki.deleteTiddler(draftTitle);
+			if(!event.paramObject || event.paramObject.suppressNavigation !== &quot;yes&quot;) {
+				if(originalTiddler) {
+					this.replaceFirstTitleInStory(storyList,draftTitle,originalTitle);
+					this.addToHistory(originalTitle,event.navigateFromClientRect);
+				} else {
+					this.removeTitleFromStory(storyList,draftTitle);
+				}
+				this.saveStoryList(storyList);
+			}
+		}
+	}
+	return false;
+};
+
+// Create a new draft tiddler
+// event.param can either be the title of a template tiddler, or a hashmap of fields.
+//
+// The title of the newly created tiddler follows these rules:
+// * If a hashmap was used and a title field was specified, use that title
+// * If a hashmap was used without a title field, use a default title, if necessary making it unique with a numeric suffix
+// * If a template tiddler was used, use the title of the template, if necessary making it unique with a numeric suffix
+//
+// If a draft of the target tiddler already exists then it is reused
+NavigatorWidget.prototype.handleNewTiddlerEvent = function(event) {
+	event = $tw.hooks.invokeHook(&quot;th-new-tiddler&quot;, event);
+	// Get the story details
+	var storyList = this.getStoryList(),
+		templateTiddler, additionalFields, title, draftTitle, existingTiddler;
+	// Get the template tiddler (if any)
+	if(typeof event.param === &quot;string&quot;) {
+		// Get the template tiddler
+		templateTiddler = this.wiki.getTiddler(event.param);
+		// Generate a new title
+		title = this.wiki.generateNewTitle(event.param || $tw.language.getString(&quot;DefaultNewTiddlerTitle&quot;));
+	}
+	// Get the specified additional fields
+	if(typeof event.paramObject === &quot;object&quot;) {
+		additionalFields = event.paramObject;
+	}
+	if(typeof event.param === &quot;object&quot;) { // Backwards compatibility with 5.1.3
+		additionalFields = event.param;
+	}
+	if(additionalFields &amp;&amp; additionalFields.title) {
+		title = additionalFields.title;
+	}
+	// Make a copy of the additional fields excluding any blank ones
+	var filteredAdditionalFields = $tw.utils.extend({},additionalFields);
+	Object.keys(filteredAdditionalFields).forEach(function(fieldName) {
+		if(filteredAdditionalFields[fieldName] === &quot;&quot;) {
+			delete filteredAdditionalFields[fieldName];
+		}
+	});
+	// Generate a title if we don't have one
+	title = title || this.wiki.generateNewTitle($tw.language.getString(&quot;DefaultNewTiddlerTitle&quot;));
+	// Find any existing draft for this tiddler
+	draftTitle = this.wiki.findDraft(title);
+	// Pull in any existing tiddler
+	if(draftTitle) {
+		existingTiddler = this.wiki.getTiddler(draftTitle);
+	} else {
+		draftTitle = this.generateDraftTitle(title);
+		existingTiddler = this.wiki.getTiddler(title);
+	}
+	// Merge the tags
+	var mergedTags = [];
+	if(existingTiddler &amp;&amp; existingTiddler.fields.tags) {
+		$tw.utils.pushTop(mergedTags,existingTiddler.fields.tags);
+	}
+	if(additionalFields &amp;&amp; additionalFields.tags) {
+		// Merge tags
+		mergedTags = $tw.utils.pushTop(mergedTags,$tw.utils.parseStringArray(additionalFields.tags));
+	}
+	if(templateTiddler &amp;&amp; templateTiddler.fields.tags) {
+		// Merge tags
+		mergedTags = $tw.utils.pushTop(mergedTags,templateTiddler.fields.tags);
+	}
+	// Save the draft tiddler
+	var draftTiddler = new $tw.Tiddler({
+			text: &quot;&quot;,
+			&quot;draft.title&quot;: title
+		},
+		templateTiddler,
+		additionalFields,
+		this.wiki.getCreationFields(),
+		existingTiddler,
+		filteredAdditionalFields,
+		{
+			title: draftTitle,
+			&quot;draft.of&quot;: title,
+			tags: mergedTags
+		},this.wiki.getModificationFields());
+	this.wiki.addTiddler(draftTiddler);
+	// Update the story to insert the new draft at the top and remove any existing tiddler
+	if(storyList &amp;&amp; storyList.indexOf(draftTitle) === -1) {
+		var slot = storyList.indexOf(event.navigateFromTitle);
+		if(slot === -1) {
+			slot = this.getAttribute(&quot;openLinkFromOutsideRiver&quot;,&quot;top&quot;) === &quot;bottom&quot; ? storyList.length - 1 : slot;
+		}
+		storyList.splice(slot + 1,0,draftTitle);
+	}
+	if(storyList &amp;&amp; storyList.indexOf(title) !== -1) {
+		storyList.splice(storyList.indexOf(title),1);
+	}
+	this.saveStoryList(storyList);
+	// Add a new record to the top of the history stack
+	this.addToHistory(draftTitle);
+	return false;
+};
+
+// Import JSON tiddlers into a pending import tiddler
+NavigatorWidget.prototype.handleImportTiddlersEvent = function(event) {
+	// Get the tiddlers
+	var tiddlers = [];
+	try {
+		tiddlers = JSON.parse(event.param);
+	} catch(e) {
+	}
+	// Get the current $:/Import tiddler
+	var importTiddler = this.wiki.getTiddler(IMPORT_TITLE),
+		importData = this.wiki.getTiddlerData(IMPORT_TITLE,{}),
+		newFields = new Object({
+			title: IMPORT_TITLE,
+			type: &quot;application/json&quot;,
+			&quot;plugin-type&quot;: &quot;import&quot;,
+			&quot;status&quot;: &quot;pending&quot;
+		}),
+		incomingTiddlers = [];
+	// Process each tiddler
+	importData.tiddlers = importData.tiddlers || {};
+	$tw.utils.each(tiddlers,function(tiddlerFields) {
+		tiddlerFields.title = $tw.utils.trim(tiddlerFields.title);
+		var title = tiddlerFields.title;
+		if(title) {
+			incomingTiddlers.push(title);
+			importData.tiddlers[title] = tiddlerFields;
+		}
+	});
+	// Give the active upgrader modules a chance to process the incoming tiddlers
+	var messages = this.wiki.invokeUpgraders(incomingTiddlers,importData.tiddlers);
+	$tw.utils.each(messages,function(message,title) {
+		newFields[&quot;message-&quot; + title] = message;
+	});
+	// Deselect any suppressed tiddlers
+	$tw.utils.each(importData.tiddlers,function(tiddler,title) {
+		if($tw.utils.count(tiddler) === 0) {
+			newFields[&quot;selection-&quot; + title] = &quot;unchecked&quot;;
+		}
+	});
+	// Save the $:/Import tiddler
+	newFields.text = JSON.stringify(importData,null,$tw.config.preferences.jsonSpaces);
+	this.wiki.addTiddler(new $tw.Tiddler(importTiddler,newFields));
+	// Update the story and history details
+	if(this.getVariable(&quot;tv-auto-open-on-import&quot;) !== &quot;no&quot;) {
+		var storyList = this.getStoryList(),
+			history = [];
+		// Add it to the story
+		if(storyList &amp;&amp; storyList.indexOf(IMPORT_TITLE) === -1) {
+			storyList.unshift(IMPORT_TITLE);
+		}
+		// And to history
+		history.push(IMPORT_TITLE);
+		// Save the updated story and history
+		this.saveStoryList(storyList);
+		this.addToHistory(history);
+	}
+	return false;
+};
+
+//
+NavigatorWidget.prototype.handlePerformImportEvent = function(event) {
+	var self = this,
+		importTiddler = this.wiki.getTiddler(event.param),
+		importData = this.wiki.getTiddlerDataCached(event.param,{tiddlers: {}}),
+		importReport = [];
+	// Add the tiddlers to the store
+	importReport.push($tw.language.getString(&quot;Import/Imported/Hint&quot;) + &quot;\n&quot;);
+	$tw.utils.each(importData.tiddlers,function(tiddlerFields) {
+		var title = tiddlerFields.title;
+		if(title &amp;&amp; importTiddler &amp;&amp; importTiddler.fields[&quot;selection-&quot; + title] !== &quot;unchecked&quot;) {
+			var tiddler = new $tw.Tiddler(tiddlerFields);
+			tiddler = $tw.hooks.invokeHook(&quot;th-importing-tiddler&quot;,tiddler);
+			self.wiki.addTiddler(tiddler);
+			importReport.push(&quot;# [[&quot; + tiddlerFields.title + &quot;]]&quot;);
+		}
+	});
+	// Replace the $:/Import tiddler with an import report
+	this.wiki.addTiddler(new $tw.Tiddler({
+		title: event.param,
+		text: importReport.join(&quot;\n&quot;),
+		&quot;status&quot;: &quot;complete&quot;
+	}));
+	// Navigate to the $:/Import tiddler
+	this.addToHistory([event.param]);
+	// Trigger an autosave
+	$tw.rootWidget.dispatchEvent({type: &quot;tm-auto-save-wiki&quot;});
+};
+
+NavigatorWidget.prototype.handleFoldTiddlerEvent = function(event) {
+	var paramObject = event.paramObject || {};
+	if(paramObject.foldedState) {
+		var foldedState = this.wiki.getTiddlerText(paramObject.foldedState,&quot;show&quot;) === &quot;show&quot; ? &quot;hide&quot; : &quot;show&quot;;
+		this.wiki.setText(paramObject.foldedState,&quot;text&quot;,null,foldedState);
+	}
+};
+
+NavigatorWidget.prototype.handleFoldOtherTiddlersEvent = function(event) {
+	var self = this,
+		paramObject = event.paramObject || {},
+		prefix = paramObject.foldedStatePrefix;
+	$tw.utils.each(this.getStoryList(),function(title) {
+		self.wiki.setText(prefix + title,&quot;text&quot;,null,event.param === title ? &quot;show&quot; : &quot;hide&quot;);
+	});
+};
+
+NavigatorWidget.prototype.handleFoldAllTiddlersEvent = function(event) {
+	var self = this,
+		paramObject = event.paramObject || {},
+		prefix = paramObject.foldedStatePrefix || &quot;$:/state/folded/&quot;;
+	$tw.utils.each(this.getStoryList(),function(title) {
+		self.wiki.setText(prefix + title,&quot;text&quot;,null,&quot;hide&quot;);
+	});
+};
+
+NavigatorWidget.prototype.handleUnfoldAllTiddlersEvent = function(event) {
+	var self = this,
+		paramObject = event.paramObject || {},
+		prefix = paramObject.foldedStatePrefix;
+	$tw.utils.each(this.getStoryList(),function(title) {
+		self.wiki.setText(prefix + title,&quot;text&quot;,null,&quot;show&quot;);
+	});
+};
+
+NavigatorWidget.prototype.handleRenameTiddlerEvent = function(event) {
+	var paramObject = event.paramObject || {},
+		from = paramObject.from || event.tiddlerTitle,
+		to = paramObject.to;
+	$tw.wiki.renameTiddler(from,to);
+};
+
+exports.navigator = NavigatorWidget;
+
+})();
+</pre>
+</div>
+<div created="20191025200116690" creator="pimgeek" description="create a new empty tiddler" modified="20191025200131185" modifier="pimgeek" tags="$:/tags/Actions" title="$:/core/ui/Actions/new-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;'/&gt;</pre>
+</div>
+<div caption="{{$:/core/images/new-here-button}} {{$:/language/Buttons/NewHere/Caption}}" created="20191025200223924" creator="pimgeek" description="{{$:/language/Buttons/NewHere/Hint}}" modified="20191025200227247" modifier="pimgeek" tags="$:/tags/ViewToolbar" title="$:/core/ui/Buttons/new-here" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\whitespace trim
+\define newHereActions()
+&lt;$set name=&quot;tags&quot; filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;' tags=&lt;&lt;tags&gt;&gt;/&gt;
+&lt;/$set&gt;
+\end
+\define newHereButton()
+&lt;$button actions=&lt;&lt;newHereActions&gt;&gt; tooltip={{$:/language/Buttons/NewHere/Hint}} aria-label={{$:/language/Buttons/NewHere/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
+{{$:/core/images/new-here-button}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;
+&lt;$text text={{$:/language/Buttons/NewHere/Caption}}/&gt;
+&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;
+\end
+&lt;&lt;newHereButton&gt;&gt;</pre>
+</div>
 <div created="20191024093906354" creator="pimgeek" modified="20191024093947155" modifier="pimgeek" title="$:/core/ui/ListItemTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-menu-list-item&quot;&gt;
 &lt;$link to={{!!title}}&gt;
@@ -9641,7 +10361,7 @@ exports.startup = function() {
 &lt;/span&gt;
 </pre>
 </div>
-<div created="20191015074246381" creator="pimgeek" modified="20191020130248843" modifier="pimgeek" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191015074246381" creator="pimgeek" modified="20191025045129453" modifier="pimgeek" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>about</pre>
 </div>
 <div created="20191020140212164" creator="pimgeek" modified="20191020140217342" modifier="pimgeek" title="$:/GitHub/Filename" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -9655,16 +10375,6 @@ exports.startup = function() {
 </div>
 <div created="20191020140142501" creator="pimgeek" modified="20191020140145673" modifier="pimgeek" title="$:/GitHub/Username" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>pimgeek</pre>
-</div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json" revision="3" bag="default">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;customized&quot;
-        }
-    }
-}</pre>
 </div>
 <div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
@@ -13660,7 +14370,7 @@ toolbar-done-button:
 untagged-background: &lt;&lt;colour very-muted-foreground&gt;&gt;
 very-muted-foreground: rgba(0, 0, 0, 0.12)</pre>
 </div>
-<div created="20191024232630395" creator="pimgeek" modified="20191025015201161" modifier="pimgeek" name="pimgeek 自定义 list macro" tags="$:/tags/Macro" title="$:/pimgeek-customized-list-macro" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20191024232630395" creator="pimgeek" modified="20191025015203500" modifier="pimgeek" name="pimgeek 自定义 list macro" tags="$:/tags/Macro" title="$:/pimgeek-customized-list-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define list-links(filter,type:&quot;ul&quot;,subtype:&quot;li&quot;,class:&quot;&quot;,emptyMessage)
 \whitespace trim
 &lt;$type$ class=&quot;$class$&quot;&gt;
@@ -13957,17 +14667,11 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191025015447645" creator="pimgeek" modified="20191025015505238" modifier="pimgeek" title="$:/state/Link/-921607903/search" revision="25" bag="default">
-<pre></pre>
+<div created="20191025200921051" creator="pimgeek" modified="20191025201705953" modifier="pimgeek" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
 </div>
-<div created="20191025014651770" creator="pimgeek" modified="20191025014653668" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191025200459814" creator="pimgeek" modified="20191025201303821" modifier="pimgeek" title="$:/state/sidebar" revision="4" bag="default">
 <pre>yes</pre>
-</div>
-<div created="20191025015322440" creator="pimgeek" modified="20191025015323377" modifier="pimgeek" title="$:/state/tab--1498284803" revision="2" bag="default">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
-</div>
-<div created="20191025015206736" creator="pimgeek" modified="20191025015327346" modifier="pimgeek" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>no</pre>
@@ -13981,11 +14685,11 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div created="20191025014709983" creator="pimgeek" list="about" modified="20191025015621859" modifier="pimgeek" title="$:/StoryList" revision="29" bag="default">
+<div created="20191025200539379" creator="pimgeek" list="" modified="20191025201313902" modifier="pimgeek" title="$:/StoryList" revision="22" bag="default">
 <pre></pre>
 </div>
-<div created="20191025014843832" creator="pimgeek" modified="20191025015513636" modifier="pimgeek" title="$:/temp/advancedsearch" revision="30" bag="default">
-<pre>pimgeek</pre>
+<div case-insensitive="(?i)" created="20191025200529439" creator="pimgeek" field="text" modified="20191025200803862" modifier="pimgeek" title="$:/temp/advancedsearch" revision="107" bag="default">
+<pre>点击</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
 <pre>{
@@ -14032,11 +14736,11 @@ exports.click = ClickListener;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1366&quot;
+            &quot;text&quot;: &quot;1536&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;768&quot;
+            &quot;text&quot;: &quot;864&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -14044,9 +14748,6 @@ exports.click = ClickListener;
         }
     }
 }</pre>
-</div>
-<div created="20191025014838075" creator="pimgeek" modified="20191025014843833" modifier="pimgeek" title="$:/temp/search" revision="15" bag="default">
-<pre></pre>
 </div>
 <div created="20191015083037292" creator="pimgeek" modified="20191020151359206" modifier="pimgeek" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -14172,14 +14873,18 @@ exports.click = ClickListener;
 <div created="20191015081827243" creator="pimgeek" modified="20191017015852735" modifier="pimgeek" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>pop</pre>
 </div>
-<div created="20191022160641098" creator="pimgeek" modified="20191023231648808" modifier="pimgeek" name="关于本站" title="about" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191022160641098" creator="pimgeek" modified="20191025051846915" modifier="pimgeek" name="关于本站" title="about" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
 [img[https://pimfans.hintsnet.com/picgo/20191024071632.png]]
 
 这是一个基于 [[TiddlyWiki|https://tiddlywiki.com]] 的知识库站点，主要包含站长 [[pimgeek]] 收集的百科知识卡片，内容主题涉及意识研究，注意力管理与知识管理，学习方法等。
 
-首次来访的读者，欢迎从 [[“相见恨晚的知识”|the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier]] 条目开始阅读。</pre>
+首次来访的读者，欢迎从 [[“相见恨晚的知识”|the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier]] 条目开始阅读。
+
+!!!! 借助全文搜索工具自行查找
+
+{{$:/.tb/ui/AdvancedSearch/Field}}</pre>
 </div>
 <div created="20191023102348915" creator="pimgeek" modified="20191023102733196" modifier="pimgeek" name="关于临时直播内容" tags="" title="about-adhoc-live-show" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
@@ -14234,6 +14939,11 @@ exports.click = ClickListener;
 有两种方法, 一种是在侧边栏隐藏的状态下保存 Wiki, 另一种需要导入两个专用的系统条目并设置自动隐藏开关.
 
 具体可参考 - https://github.com/Jermolene/TiddlyWiki5/issues/3171</pre>
+</div>
+<div created="20191025025714854" creator="pimgeek" modified="20191025025856734" modifier="pimgeek" name="如何把 HTML 源码转换为 TiddlyWiki 格式文本" tags="" title="how-to-convert-html-source-to-tiddlywiki-text" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+详情参考 - https://groups.google.com/d/topic/tiddlywiki/2uh1pQLNKHM/discussion</pre>
 </div>
 <div created="20191021072113024" creator="pimgeek" modified="20191022230511483" modifier="pimgeek" name="如何在 TiddlyWiki 的条目 (Tiddler) 中创建表格?" tags="" title="how-to-create-table-in-tiddlywiki-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
@@ -14351,7 +15061,7 @@ pimgeek — [[集智俱乐部|http://www.swarma.org/]] 核心志愿者，现任 
 |..|..|..|..|
 @@</pre>
 </div>
-<div created="20191024080810453" creator="pimgeek" modified="20191025015638848" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20191024080810453" creator="pimgeek" modified="20191025015640948" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
 * 当前条目 --引用--&gt; $:/core/ui/ViewTemplate
