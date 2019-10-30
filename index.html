@@ -11,7 +11,7 @@
 <meta name="application-name" content="TiddlyWiki" />
 <meta name="generator" content="TiddlyWiki" />
 <meta name="tiddlywiki-version" content="5.1.21" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="mobile-web-app-capable" content="yes"/>
@@ -145,8 +145,6 @@ Error message and password prompt
 
 <li>$:/.tb/ui/AdvancedSearch/Field</li>
 
-<li>$:/centered-div-content-block</li>
-
 <li>$:/config/AnimationDuration</li>
 
 <li>$:/config/DefaultSidebarTab</li>
@@ -160,6 +158,8 @@ Error message and password prompt
 <li>$:/config/Manager/Sort</li>
 
 <li>$:/config/Manager/System</li>
+
+<li>$:/config/Navigation/openLinkFromInsideRiver</li>
 
 <li>$:/config/Navigation/UpdateAddressBar</li>
 
@@ -190,6 +190,8 @@ Error message and password prompt
 <li>$:/core</li>
 
 <li>$:/core/modules/widgets/navigator.js</li>
+
+<li>$:/core/templates/tiddlywiki5.html</li>
 
 <li>$:/core/ui/Actions/new-tiddler</li>
 
@@ -227,13 +229,21 @@ Error message and password prompt
 
 <li>$:/palettes/SpartanDay-pimgeek</li>
 
-<li>$:/pimgeek-customized-list-macro</li>
+<li>$:/pimgeek/centered-div-content-block</li>
 
-<li>$:/pimgeek-customized-timeline-macro</li>
+<li>$:/pimgeek/customized-list-macro</li>
+
+<li>$:/pimgeek/customized-site-css-style</li>
+
+<li>$:/pimgeek/customized-system-tiddlers-list</li>
+
+<li>$:/pimgeek/customized-timeline-macro</li>
 
 <li>$:/plugins/danielo515/2click2edit</li>
 
 <li>$:/plugins/danielo515/2click2edit/ClickListener.js</li>
+
+<li>$:/plugins/kookma/shiraz</li>
 
 <li>$:/plugins/tiddlywiki/highlight</li>
 
@@ -242,6 +252,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab--1498284803</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -253,7 +265,11 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/advancedsearch</li>
+
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -267,6 +283,12 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
+<li>$:/themes/tiddlywiki/vanilla/settings/codefontfamily</li>
+
+<li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
+
+<li>$:/themes/tiddlywiki/vanilla/settings/fontfamily</li>
+
 <li>$:/view</li>
 
 <li>about</li>
@@ -278,6 +300,8 @@ Error message and password prompt
 <li>button-that-navigates-to-external-url</li>
 
 <li>button-that-navigates-to-internal-tiddler</li>
+
+<li>diamond-yuan-wiki</li>
 
 <li>disordered-information-blackhole-warning</li>
 
@@ -295,6 +319,10 @@ Error message and password prompt
 
 <li>how-to-hide-a-tiddler-in-tiddlywiki</li>
 
+<li>how-to-make-image-look-better-in-tiddlers</li>
+
+<li>how-to-search-by-selected-field-in-tiddlywiki</li>
+
 <li>how-to-understant-optimal-learning-percentage-15.87</li>
 
 <li>iflytek-voice-input-method-for-windows</li>
@@ -303,11 +331,7 @@ Error message and password prompt
 
 <li>pimgeek</li>
 
-<li>pimgeek-customized-site-css-style</li>
-
 <li>pimgeek-preferred-km-software-shortcut-key-checklist</li>
-
-<li>tag-function-related-system-tiddlers</li>
 
 <li>the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier</li>
 
@@ -358,7 +382,7 @@ exports.startup = function() {
 
 })();</pre>
 </div>
-<div caption="In Fields" created="20141231095518178" creator="Tobias Beer" list-before="$:/core/ui/AdvancedSearch/Filter" modified="20191025053408581" modifier="pimgeek" tags="$:/tags/AdvancedSearch" title="$:/.tb/ui/AdvancedSearch/Field" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="按字段搜索" created="20141231095518178" creator="Tobias Beer" list-before="$:/core/ui/AdvancedSearch/Filter" modified="20191030094258263" modifier="pimgeek" tags="$:/tags/AdvancedSearch" title="$:/.tb/ui/AdvancedSearch/Field" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>\define searchInField(field, for, ci)
 &lt;$list filter=&quot;[!is[shadow]!is[system]regexp:$field$[$for$$ci$]limit[1]]&quot;&gt;
 &lt;dt&gt;$field$&lt;/dt&gt;
@@ -376,7 +400,7 @@ exports.startup = function() {
 &lt;div class=&quot;tc-search&quot;&gt;
 &lt;$edit-text tiddler=&quot;$:/temp/advancedsearch&quot; type=&quot;search&quot; tag=&quot;input&quot;/&gt;
 &lt;$select field=&quot;field&quot; tiddler=&quot;$:/temp/advancedsearch&quot; default=&quot;text&quot;&gt;
-&lt;option value=&quot;&quot;&gt;*any&lt;/option&gt;
+&lt;option value=&quot;&quot;&gt;text&lt;/option&gt;
 &lt;$list filter=&quot;[!is[shadow]!is[system]fields[]sort[]]&quot; variable=&quot;field&quot;&gt;
 &lt;option value=&lt;&lt;field&gt;&gt;&gt;&lt;&lt;field&gt;&gt;&lt;/option&gt;
 &lt;/$list&gt;
@@ -408,13 +432,8 @@ exports.startup = function() {
 &lt;/$reveal&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191024143931574" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="$:/centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;div class=&quot;centered&quot;&gt;
-
-&lt;/div&gt;</pre>
-</div>
-<div created="20191015230604065" creator="pimgeek" modified="20191015230726962" modifier="pimgeek" title="$:/config/AnimationDuration" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>80</pre>
+<div created="20191015230604065" creator="pimgeek" modified="20191030065957368" modifier="pimgeek" title="$:/config/AnimationDuration" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>600</pre>
 </div>
 <div created="20191020150519510" creator="pimgeek" modified="20191020150521685" modifier="pimgeek" title="$:/config/DefaultSidebarTab" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -433,6 +452,9 @@ exports.startup = function() {
 </div>
 <div created="20191022155224431" creator="pimgeek" modified="20191025202029312" modifier="pimgeek" title="$:/config/Manager/System" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>system</pre>
+</div>
+<div created="20191030070916343" creator="pimgeek" modified="20191030070918941" modifier="pimgeek" title="$:/config/Navigation/openLinkFromInsideRiver" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>above</pre>
 </div>
 <div created="20191019064753621" creator="pimgeek" modified="20191019064754826" modifier="pimgeek" title="$:/config/Navigation/UpdateAddressBar" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>permalink</pre>
@@ -9666,7 +9688,7 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20191025195846596" creator="pimgeek" modified="20191025200009453" modifier="pimgeek" module-type="widget" title="$:/core/modules/widgets/navigator.js" type="application/javascript" revision="0" bag="default">
+<div created="20191025195846596" creator="pimgeek" modified="20191030085639545" modifier="pimgeek" module-type="widget" tags="utils" title="$:/core/modules/widgets/navigator.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 title: $:/core/modules/widgets/navigator.js
 type: application/javascript
@@ -9954,12 +9976,14 @@ NavigatorWidget.prototype.makeDraftTiddler = function(targetTitle) {
 			this.wiki.getModificationFields()
 		);
 	} else {
-			var default_text = '! &lt;$view field=&quot;name&quot;/&gt;';
+		var default_text = '! &lt;$view field=&quot;name&quot;/&gt;';
+		var default_name = &quot;新笔记&quot;;
 		draftTiddler = new $tw.Tiddler(
 			tiddler,
 			{
 				title: draftTitle,
 				text: default_text,
+				name: default_name,
 				&quot;draft.title&quot;: targetTitle,
 				&quot;draft.of&quot;: targetTitle
 			},
@@ -10305,14 +10329,74 @@ exports.navigator = NavigatorWidget;
 })();
 </pre>
 </div>
-<div created="20191025200116690" creator="pimgeek" description="create a new empty tiddler" modified="20191025200131185" modifier="pimgeek" tags="$:/tags/Actions" title="$:/core/ui/Actions/new-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;'/&gt;</pre>
+<div created="20191028060038675" creator="pimgeek" modified="20191030091011088" modifier="pimgeek" tags="utils" title="$:/core/templates/tiddlywiki5.html" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$set name=&quot;saveTiddlerAndShadowsFilter&quot; filter=&quot;[subfilter&lt;saveTiddlerFilter&gt;] [subfilter&lt;saveTiddlerFilter&gt;plugintiddlers[]]&quot;&gt;
+`&lt;!doctype html&gt;
+`{{$:/core/templates/MOTW.html}}`&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+&lt;!--~~ Raw markup for the top of the head section ~~--&gt;
+`{{{ [&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/tags/RawMarkupWikified/TopHead]] ||$:/core/templates/raw-static-tiddler}}}`
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;/&gt;
+&lt;meta name=&quot;application-name&quot; content=&quot;TiddlyWiki&quot; /&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;TiddlyWiki&quot; /&gt;
+&lt;meta name=&quot;tiddlywiki-version&quot; content=&quot;`{{$:/core/templates/version}}`&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot; /&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
+&lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;
+&lt;meta name=&quot;copyright&quot; content=&quot;`{{$:/core/copyright.txt}}`&quot; /&gt;
+&lt;link id=&quot;faviconLink&quot; rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot;&gt;
+&lt;title&gt;`{{$:/core/wiki/title}}`&lt;/title&gt;
+&lt;!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--&gt;
+
+&lt;!--~~ Raw markup ~~--&gt;
+`{{{ [enlist&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/core/wiki/rawmarkup]] ||$:/core/templates/plain-text-tiddler}}}
+{{{ [enlist&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/tags/RawMarkup]] ||$:/core/templates/plain-text-tiddler}}}
+{{{ [enlist&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/tags/RawMarkupWikified]] ||$:/core/templates/raw-static-tiddler}}}`
+&lt;/head&gt;
+&lt;body class=&quot;tc-body&quot;&gt;
+&lt;!--~~ Raw markup for the top of the body section ~~--&gt;
+`{{{ [enlist&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/tags/RawMarkupWikified/TopBody]] ||$:/core/templates/raw-static-tiddler}}}`
+&lt;!--~~ Static styles ~~--&gt;
+&lt;div id=&quot;styleArea&quot;&gt;
+`{{$:/boot/boot.css||$:/core/templates/css-tiddler}}`
+&lt;/div&gt;
+&lt;!--~~ Static content for Google and browsers without JavaScript ~~--&gt;
+&lt;noscript&gt;
+&lt;div id=&quot;splashArea&quot;&gt;
+`{{$:/core/templates/static.area}}`
+&lt;/div&gt;
+&lt;/noscript&gt;
+&lt;!--~~ Ordinary tiddlers ~~--&gt;
+`{{$:/core/templates/store.area.template.html}}`
+&lt;!--~~ Library modules ~~--&gt;
+&lt;div id=&quot;libraryModules&quot; style=&quot;display:none;&quot;&gt;
+`{{{ [is[system]type[application/javascript]library[yes]] ||$:/core/templates/javascript-tiddler}}}`
+&lt;/div&gt;
+&lt;!--~~ Boot kernel prologue ~~--&gt;
+&lt;div id=&quot;bootKernelPrefix&quot; style=&quot;display:none;&quot;&gt;
+`{{ $:/boot/bootprefix.js ||$:/core/templates/javascript-tiddler}}`
+&lt;/div&gt;
+&lt;!--~~ Boot kernel ~~--&gt;
+&lt;div id=&quot;bootKernel&quot; style=&quot;display:none;&quot;&gt;
+`{{ $:/boot/boot.js ||$:/core/templates/javascript-tiddler}}`
+&lt;/div&gt;
+&lt;!--~~ Raw markup for the bottom of the body section ~~--&gt;
+`{{{ [enlist&lt;saveTiddlerAndShadowsFilter&gt;tag[$:/tags/RawMarkupWikified/BottomBody]] ||$:/core/templates/raw-static-tiddler}}}`
+&lt;/body&gt;
+&lt;/html&gt;`
+</pre>
 </div>
-<div caption="{{$:/core/images/new-here-button}} {{$:/language/Buttons/NewHere/Caption}}" created="20191025200223924" creator="pimgeek" description="{{$:/language/Buttons/NewHere/Hint}}" modified="20191025200227247" modifier="pimgeek" tags="$:/tags/ViewToolbar" title="$:/core/ui/Buttons/new-here" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191025200116690" creator="pimgeek" description="create a new empty tiddler" modified="20191030090205095" modifier="pimgeek" tags="utils $:/tags/Actions" title="$:/core/ui/Actions/new-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;' name=&quot;新笔记&quot;/&gt;</pre>
+</div>
+<div caption="{{$:/core/images/new-here-button}} {{$:/language/Buttons/NewHere/Caption}}" created="20191025200223924" creator="pimgeek" description="{{$:/language/Buttons/NewHere/Hint}}" modified="20191030090235423" modifier="pimgeek" tags="utils $:/tags/ViewToolbar" title="$:/core/ui/Buttons/new-here" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\whitespace trim
 \define newHereActions()
 &lt;$set name=&quot;tags&quot; filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;' tags=&lt;&lt;tags&gt;&gt;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; text='! &lt;$view field=&quot;name&quot;/&gt;' name=&quot;新笔记&quot; tags=&lt;&lt;tags&gt;&gt;/&gt;
 &lt;/$set&gt;
 \end
 \define newHereButton()
@@ -10329,7 +10413,7 @@ exports.navigator = NavigatorWidget;
 \end
 &lt;&lt;newHereButton&gt;&gt;</pre>
 </div>
-<div created="20191024093906354" creator="pimgeek" modified="20191024093947155" modifier="pimgeek" title="$:/core/ui/ListItemTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191024093906354" creator="pimgeek" modified="20191030084037489" modifier="pimgeek" tags="utils" title="$:/core/ui/ListItemTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-menu-list-item&quot;&gt;
 &lt;$link to={{!!title}}&gt;
 &lt;$view field=&quot;name&quot;&gt;
@@ -10338,7 +10422,7 @@ exports.navigator = NavigatorWidget;
 &lt;/$link&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20191024094036094" creator="pimgeek" modified="20191024231455045" modifier="pimgeek" title="$:/core/ui/TagTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191024094036094" creator="pimgeek" modified="20191030084059821" modifier="pimgeek" tags="utils" title="$:/core/ui/TagTemplate" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\whitespace trim
 &lt;span class=&quot;tc-tag-list-item&quot;&gt;
 &lt;$set name=&quot;transclusion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
@@ -10380,8 +10464,8 @@ exports.navigator = NavigatorWidget;
 <div created="20191015081437054" creator="pimgeek" modified="20191015081444533" modifier="pimgeek" title="$:/language" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/languages/zh-Hans</pre>
 </div>
-<div created="20191015074259607" creator="pimgeek" modified="20191015074307808" modifier="pimgeek" title="$:/language/DefaultNewTiddlerTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>新笔记</pre>
+<div created="20191015074259607" creator="pimgeek" modified="20191030084434704" modifier="pimgeek" title="$:/language/DefaultNewTiddlerTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>new-note</pre>
 </div>
 <div author="BramChen" core-version="&gt;=5.0.8" created="20191015074435547" dependents="" description="Chinese (Simplified)" modified="20191015074435547" name="zh-Hans" plugin-priority="100" plugin-type="language" title="$:/languages/zh-Hans" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -14029,10 +14113,10 @@ exports.navigator = NavigatorWidget;
     }
 }</pre>
 </div>
-<div created="20191016154037092" creator="pimgeek" modified="20191024144521712" modifier="pimgeek" name="登录入口" tags="" title="$:/login" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191016154037092" creator="pimgeek" modified="20191030074618713" modifier="pimgeek" name="登录入口" tags="utils" title="$:/login" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;centered&quot;&gt;
 
-! &lt;a href=&quot;https://wiki.hintsnet.com/login-basic&quot; target=&quot;_self&quot;&gt;点击这里登录&lt;/a&gt;
+! &lt;a href=&quot;https://wiki.hintsnet.com/login-basic&quot; target=&quot;_self&quot; rel=&quot;noopener noreferrer&quot;&gt;点击这里登录&lt;/a&gt;
 
 &lt;/div&gt;</pre>
 </div>
@@ -14368,7 +14452,12 @@ toolbar-done-button:
 untagged-background: &lt;&lt;colour very-muted-foreground&gt;&gt;
 very-muted-foreground: rgba(0, 0, 0, 0.12)</pre>
 </div>
-<div created="20191024232630395" creator="pimgeek" modified="20191025015203500" modifier="pimgeek" name="pimgeek 自定义 list macro" tags="$:/tags/Macro" title="$:/pimgeek-customized-list-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div caption="居中的 div 内容块" created="20191024051025843" creator="pimgeek" modified="20191030081558027" modifier="pimgeek" name="居中的 div 内容块" tags="utils $:/tags/TextEditor/Snippet" title="$:/pimgeek/centered-div-content-block" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;centered&quot;&gt;
+
+&lt;/div&gt;</pre>
+</div>
+<div created="20191024232630395" creator="pimgeek" modified="20191030081658070" modifier="pimgeek" name="pimgeek 自定义 list macro" tags="utils $:/tags/Macro" title="$:/pimgeek/customized-list-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define list-links(filter,type:&quot;ul&quot;,subtype:&quot;li&quot;,class:&quot;&quot;,emptyMessage)
 \whitespace trim
 &lt;$type$ class=&quot;$class$&quot;&gt;
@@ -14478,7 +14567,49 @@ very-muted-foreground: rgba(0, 0, 0, 0.12)</pre>
 \end
 </pre>
 </div>
-<div created="20191022223702170" creator="pimgeek" modified="20191024145936743" modifier="pimgeek" name="pimgeek 自定义时间线展示器 (Macro)" tags="$:/tags/Macro" title="$:/pimgeek-customized-timeline-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191020152607678" creator="pimgeek" modified="20191030081503121" modifier="pimgeek" name="pimgeek 自定义站点 CSS 样式" tags="utils $:/tags/Stylesheet" title="$:/pimgeek/customized-site-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>img {
+ border-radius:10px;
+}
+.centered {
+ text-align: center;
+}
+.tc-titlebar {
+ line-height:100% !important;
+}
+.tc-titlebar h2 {
+ border-left: 3px solid orange;
+ border-bottom: 1px dashed orange;
+ padding-left: 6px;
+ padding-bottom: 2px;
+ color: dimgray;
+ font-size:14px !important;
+}
+.tc-tiddler-frame {
+ border-radius:12px !important;
+}
+.extlink-btn a {
+ color:white;
+ text-decoration:none;
+}</pre>
+</div>
+<div created="20191024080810453" creator="pimgeek" modified="20191030091439191" modifier="pimgeek" name="pimgeek 自定制过的系统条目列表" tags="utils" title="$:/pimgeek/customized-system-tiddlers-list" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+&lt;$list filter=&quot;[all[]prefix[$]!prefix[$:/config]!prefix[$:/state]!prefix[$:/palette]!prefix[$:/theme]!prefix[$:/HistoryList]!prefix[$:/StoryList]!prefix[$:/GitHub]field:creator[pimgeek]sort[created]]&quot;/&gt;
+
+----
+
+!! Tag 以中文标题显示相关条目
+
+* 当前条目 --引用--&gt; $:/core/ui/ViewTemplate
+* $:/core/ui/ViewTemplate ==引用==&gt; $:/core/ui/ViewTemplate/tags
+* $:/core/ui/ViewTemplate/tags ==引用==&gt; $:/core/ui/TagTemplate
+* $:/core/ui/TagTemplate ==引用==&gt; $:/core/ui/ListItemTemplate
+* $:/core/ui/ListItemTemplate ==决定==&gt; 最初条目中的 Tag 链接如何显示
+* [[$:/pimgeek/customized-list-macro]] ==决定==&gt; Tag 下拉列表的显示方式</pre>
+</div>
+<div created="20191022223702170" creator="pimgeek" modified="20191030081513553" modifier="pimgeek" name="pimgeek 自定义时间线展示器 (Macro)" tags="utils $:/tags/Macro" title="$:/pimgeek/customized-timeline-macro" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define timeline-title()
 &lt;!-- pimgeek customized timeline macro --&gt;
 &lt;$view field=&quot;name&quot;&gt;
@@ -14525,7 +14656,7 @@ very-muted-foreground: rgba(0, 0, 0, 0.12)</pre>
     }
 }</pre>
 </div>
-<div created="20191015230025171" creator="pimgeek" modified="20191015230029557" modifier="pimgeek" module-type="widget" title="$:/plugins/danielo515/2click2edit/ClickListener.js" type="application/javascript" revision="0" bag="default">
+<div created="20191015230025171" creator="pimgeek" modified="20191030081352975" modifier="pimgeek" module-type="widget" tags="utils" title="$:/plugins/danielo515/2click2edit/ClickListener.js" type="application/javascript" revision="0" bag="default">
 <pre>/*\
 title: $:/plugins/danielo515/2click2edit/ClickListener.js
 type: application/javascript
@@ -14588,6 +14719,9 @@ ClickListener.prototype.refresh = function(changedTiddlers) {
 exports.click = ClickListener;
 
 })();</pre>
+</div>
+<div author="Mohammad Rahmani" core-version="&gt;=5.1.18" created="20190901192926346" description="Shiraz 2.0.0" list="readme history license" modified="20191027171718233" plugin-type="plugin" source="https://github.com/kookma/Shiraz" tags="" title="$:/plugins/kookma/shiraz" type="application/json" version="2.0.0 beta 2" revision="0" bag="default">
+<pre>{&quot;tiddlers&quot;:{&quot;$:/plugins/kookma/shiraz/history&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/history&quot;,&quot;created&quot;:&quot;20190901192929449&quot;,&quot;modified&quot;:&quot;20191018073639355&quot;,&quot;tags&quot;:&quot;&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;!! Revision 2.0.0 beta 2 \n&lt;&lt;&lt;\n* Date: [18th Oct 2019]\n* Multicolumn layout\n* the below macros with `text` input parameter modified and now uses `src` instead of `text` as this is more meaningful.\n** `alert`\n** `alert-leftbar`\n\n&lt;&lt;&lt;\n\n!! Revision 2.0.0 beta 2 \n&lt;&lt;&lt;\n* Date: [20th Sep 2019]\n* [NEW] new image macros, new image CSS\n* [NEW] new hover class for table-hover\n* all image alignment default value changed to none\n* [NEW] bootstrap clearfix class was added\n* [FIXED] table classes for colorful header have been rewritten to use some of contextual classes\n** class `centered` renamed to `center`\n* [FIXED] alerts documentation improved\n* [FIXED] images documentation improved\n* [FIXED] tables documentation improved\n* [FIXED] badges documentation improved\n* [FIXED] text-utilities documentation improved\n* [NEW] Advanced examples added, documentation in progress\n&lt;&lt;&lt;\n\n!! Revision 2.0.0 beta 1 \n&lt;&lt;&lt;\n* Date: [16th Sep 2019]\n* Shiraz 2 a new rewrite of Shiraz 1.0.2\n&lt;&lt;&lt;\n\n!! Revision 1.0.2 \n&lt;&lt;&lt;\n* Date: [8th Nov 2018]\n* New demo for making Table of Contents\n* New macros: details, abbr, hspace\n* Change name to Shiraz\n&lt;&lt;&lt;\n\n!! Revision 1.0.1 \n&lt;&lt;&lt;\n* Date: [1st Nov 2018]\n* A rewrite and cleanup the code\n&lt;&lt;&lt;\n\n!! Revision 1.0.0\n&lt;&lt;&lt;\n* Date: [5th Oct 2018]\n* New favorites plugin\n* New timestamp plugin\n* New notebook tiddler\n&lt;&lt;&lt;\n&quot;},&quot;$:/plugins/kookma/shiraz/license&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/license&quot;,&quot;created&quot;:&quot;20181101134530634&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056627&quot;,&quot;tags&quot;:&quot;kookma&quot;,&quot;type&quot;:&quot;application/x-tiddler&quot;,&quot;text&quot;:&quot;Distributed under an MIT license.\n\nCopyright (c) 2018-2019 [[Mohammad Rahmani|https://github.com/kookma]]\n\n&lt;&lt;&lt;\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \&quot;Software\&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \&quot;AS IS\&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n&lt;&lt;&lt;\n&quot;},&quot;$:/plugins/kookma/shiraz/macros/alerts&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/alerts&quot;,&quot;created&quot;:&quot;20180821095049685&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191018073353292&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define alert(type:\&quot;primary\&quot; src:\&quot;\&quot;, width:\&quot;100%\&quot;, class:\&quot;\&quot;)\n&lt;div class=\&quot;alert alert-$type$ $class$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n$src$\n&lt;/div&gt;\n\\end\n\n\\define alert-leftbar(type:\&quot;primary\&quot; src:\&quot;\&quot;, width:\&quot;100%\&quot;, class:\&quot;\&quot;)\n&lt;div class=\&quot;alert alert-$type$ bg-transparent leftbar border-$type$ $class$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n$src$\n&lt;/div&gt;\n\\end\n&quot;},&quot;$:/plugins/kookma/shiraz/macros/badge&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/badge&quot;,&quot;created&quot;:&quot;20181124042103310&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191018073412108&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define badge(type:\&quot;primary\&quot; src:\&quot;\&quot;)\n&lt;span class=\&quot;badge badge-$type$\&quot;&gt;$src$&lt;/span&gt;\n\\end\n\n\\define badge-pill(type:\&quot;primary\&quot; src:\&quot;\&quot;)\n&lt;span class=\&quot;badge badge-pill badge-$type$\&quot;&gt;$src$&lt;/span&gt;\n\\end\n&quot;},&quot;$:/plugins/kookma/shiraz/macros/card&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/card&quot;,&quot;created&quot;:&quot;20181124111624466&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056619&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define card(header:\&quot;Empty\&quot;, title:\&quot;Empty\&quot; subtitle:\&quot;Empty\&quot; text:\&quot;Empty\&quot;,footer:\&quot;Empty\&quot;, width:\&quot;100%\&quot; class:\&quot;\&quot;)\n&lt;div class=\&quot;card mb-3 $class$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n&lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__header__&gt;&gt; &gt;\n   &lt;div class=\&quot;card-header\&quot;&gt;$header$&lt;/div&gt;\n&lt;/$reveal&gt;\n&lt;div class=\&quot;card-body\&quot;&gt;\n &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__title__&gt;&gt; &gt;\n   &lt;div class=\&quot;h5 card-title\&quot;&gt;$title$&lt;/div&gt;\n &lt;/$reveal&gt;\n &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__subtitle__&gt;&gt; &gt;\n   &lt;div class=\&quot;h6 card-subtitle mb-2 text-muted\&quot;&gt;$subtitle$&lt;/div&gt;\n &lt;/$reveal&gt;\n &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__text__&gt;&gt; &gt;\n    &lt;div class=\&quot;card-text\&quot;&gt;&lt;&lt;__text__&gt;&gt;&lt;/div&gt;\n &lt;/$reveal&gt;\n&lt;/div&gt;\n&lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__footer__&gt;&gt; &gt;\n   &lt;div class=\&quot;card-footer text-muted\&quot;&gt;$footer$&lt;/div&gt;\n&lt;/$reveal&gt;\n&lt;/div&gt;\n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/dbadge&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/dbadge&quot;,&quot;created&quot;:&quot;20181203212737578&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056613&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define dbadge(subject,status, type:\&quot;primary\&quot;)\n&lt;div class=\&quot;dbadge\&quot;&gt;&lt;span class=\&quot;dbadge-subject\&quot;&gt;$subject$&lt;/span&gt;&lt;span class=\&quot;dbadge-status dbadge-$type$ \&quot;&gt;$status$&lt;/span&gt;&lt;/div&gt;\n\\end\n&quot;},&quot;$:/plugins/kookma/shiraz/macros/details&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/details&quot;,&quot;created&quot;:&quot;20181101185833098&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191018074155899&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define details(sum:\&quot;summary\&quot;, src:\&quot;source\&quot;, class:\&quot;\&quot;, status:\&quot;\&quot;)\n&lt;details $status$&gt;\n &lt;summary&gt;$sum$&lt;/summary&gt;\n  &lt;div class=\&quot;$class$\&quot;&gt;\n   $src$\n  &lt;/div&gt;\n&lt;/details&gt;\n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-basic&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-basic&quot;,&quot;created&quot;:&quot;20181119183704246&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056608&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-basic(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, caption:\&quot;\&quot;, tooltip:\&quot;\&quot;, alt:\&quot;\&quot;)\n&lt;figure class=\&quot;image-simple image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;$image source=&lt;&lt;__img__&gt;&gt; tooltip=&lt;&lt;__tooltip__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt; \n  &lt;figcaption&gt;$caption$&lt;/figcaption&gt;\n&lt;/figure&gt; \n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-card&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-card&quot;,&quot;created&quot;:&quot;20190913094619863&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056605&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-card(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, title:\&quot;Empty\&quot;, text:\&quot;Empty\&quot;, footer:\&quot;Empty\&quot;, pos:\&quot;top\&quot;, alt:\&quot;\&quot;)\n&lt;$reveal tag=\&quot;div\&quot; type=\&quot;match\&quot; default=\&quot;top\&quot; text=&lt;&lt;__pos__&gt;&gt; &gt;\n&lt;$macrocall $name=image-card-top img=&lt;&lt;__img__&gt;&gt; title=&lt;&lt;__title__&gt;&gt; text=&lt;&lt;__text__&gt;&gt;\n  footer=&lt;&lt;__footer__&gt;&gt; width=&lt;&lt;__width__&gt;&gt; align=&lt;&lt;__align__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt;\n&lt;/$reveal&gt;\n&lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;top\&quot; text=&lt;&lt;__pos__&gt;&gt; &gt;\n&lt;$macrocall $name=image-card-bottom img=&lt;&lt;__img__&gt;&gt; title=&lt;&lt;__title__&gt;&gt; text=&lt;&lt;__text__&gt;&gt;\n  footer=&lt;&lt;__footer__&gt;&gt; width=&lt;&lt;__width__&gt;&gt; align=&lt;&lt;__align__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt;\n&lt;/$reveal&gt;\n\\end\n\n\\define image-card-top(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, title:\&quot;Empty\&quot;, text:\&quot;Empty\&quot;, footer:\&quot;Empty\&quot;, alt:\&quot;\&quot;)\n&lt;div class=\&quot;card image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;$image class=\&quot;card-img-top\&quot; source=&lt;&lt;__img__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt;\n  &lt;div class=\&quot;card-body\&quot;&gt;\n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__title__&gt;&gt; &gt;\n      &lt;div class=\&quot;h5 card-title\&quot;&gt;$title$&lt;/div&gt;\n    &lt;/$reveal&gt;  \n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__text__&gt;&gt; &gt;\n      &lt;div class=\&quot;card-text\&quot;&gt;$text$&lt;/div&gt;\n    &lt;/$reveal&gt; \n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__footer__&gt;&gt; &gt;\n      &lt;p class=\&quot;card-text\&quot;&gt;&lt;small class=\&quot;text-muted\&quot;&gt;$footer$&lt;/small&gt;&lt;/p&gt;\n    &lt;/$reveal&gt;\n  &lt;/div&gt;  \n&lt;/div&gt;\n\\end\n\n\\define image-card-bottom(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, title:\&quot;Empty\&quot;, text:\&quot;Empty\&quot;, footer:\&quot;Empty\&quot;, alt:\&quot;\&quot;)\n&lt;div class=\&quot;card image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;div class=\&quot;card-body\&quot;&gt;\n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__title__&gt;&gt; &gt;\n      &lt;div class=\&quot;h5 card-title\&quot;&gt;$title$&lt;/div&gt;\n    &lt;/$reveal&gt;  \n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__text__&gt;&gt; &gt;\n      &lt;div class=\&quot;card-text\&quot;&gt;$text$&lt;/div&gt;\n    &lt;/$reveal&gt; \n    &lt;$reveal tag=\&quot;div\&quot; type=\&quot;nomatch\&quot; default=\&quot;Empty\&quot; text=&lt;&lt;__footer__&gt;&gt; &gt;\n      &lt;p class=\&quot;card-text\&quot;&gt;&lt;small class=\&quot;text-muted\&quot;&gt;$footer$&lt;/small&gt;&lt;/p&gt;\n    &lt;/$reveal&gt;\n  &lt;/div&gt;  \n  &lt;$image class=\&quot;card-img-bottom\&quot; source=&lt;&lt;__img__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt;\n&lt;/div&gt;\n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-overlay&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-overlay&quot;,&quot;created&quot;:&quot;20181117203737197&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056602&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-overlay(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, caption:\&quot;\&quot;, title:\&quot;\&quot;, text:\&quot;\&quot;, fadein:\&quot;left\&quot;, alt:\&quot;\&quot;)\n&lt;div class=\&quot;image-overlay-container image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n    &lt;h3 class=\&quot;image-overlay-title\&quot;&gt;$caption$&lt;/h3&gt;\n    &lt;div class=\&quot;image-overlay-content\&quot;&gt;\n      &lt;div class=\&quot;image-overlay-content-overlay\&quot;&gt;&lt;/div&gt;\n      &lt;$image class=\&quot;image-overlay-content-image\&quot; source=&lt;&lt;__img__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt;/&gt;\n      &lt;$set name=\&quot;fdcls\&quot; filter=\&quot;$fadein$ +[splitbefore[ ]] +[addprefix[image-overlay-fadeIn-]]\&quot;&gt;\n      &lt;div class=&lt;&lt;_cls-content-details&gt;&gt; &gt;\n        &lt;h3 class=\&quot;image-overlay-content-title\&quot;&gt;$title$&lt;/h3&gt;\n        &lt;p class=\&quot;image-overlay-content-text\&quot;&gt;$text$&lt;/p&gt;\n      &lt;/div&gt;\n      &lt;/$set&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\\end\n\n\\define _cls-content-details() image-overlay-content-details $(fdcls)$&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-polaroid&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-polaroid&quot;,&quot;created&quot;:&quot;20181117203654803&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056598&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-polaroid(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, caption:\&quot;\&quot;, tooltip:\&quot;\&quot;, alt:\&quot;\&quot;)\n&lt;figure class=\&quot;image-polaroid image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;$image source=\&quot;\&quot;\&quot;$img$\&quot;\&quot;\&quot; tooltip=\&quot;\&quot;\&quot;$tooltip$\&quot;\&quot;\&quot;/&gt;\n  &lt;figcaption class=\&quot;image-polaroid-caption\&quot;&gt;$caption$&lt;/figcaption&gt;\n&lt;/figure&gt; \n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-pretty&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-pretty&quot;,&quot;created&quot;:&quot;20181117203541398&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056594&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-pretty(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, caption:\&quot;\&quot;, tooltip:\&quot;\&quot;, alt:\&quot;\&quot;)\n&lt;figure class=\&quot;image-pretty image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;$image source=&lt;&lt;__img__&gt;&gt; tooltip=&lt;&lt;__tooltip__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt; /&gt; \n  &lt;figcaption class=\&quot;image-pretty-caption\&quot;&gt;$caption$&lt;/figcaption&gt;\n&lt;/figure&gt; \n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/image-slidein&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/image-slidein&quot;,&quot;created&quot;:&quot;20181117040544570&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056591&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define image-slidein(img, width:\&quot;30%\&quot;, align:\&quot;none\&quot;, caption:\&quot;\&quot;, tooltip:\&quot;\&quot;, slidein:\&quot;left\&quot;, alt:\&quot;\&quot;)\n&lt;figure class=\&quot;image-slidein mr-cap-$slidein$ image-align-$align$\&quot; style=\&quot;width:$width$;\&quot;&gt;\n  &lt;$image source=&lt;&lt;__img__&gt;&gt; tooltip=&lt;&lt;__tooltip__&gt;&gt; alt=&lt;&lt;__alt__&gt;&gt;/&gt;\n  &lt;figcaption&gt;$caption$&lt;/figcaption&gt;\n&lt;/figure&gt; \n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/multicol&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/multicol&quot;,&quot;created&quot;:&quot;20191018063242993&quot;,&quot;modified&quot;:&quot;20191019083106073&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define multicol(src, ncol:\&quot;two\&quot;, class:\&quot;\&quot;)\n&lt;div class=\&quot;$ncol$columns $class$\&quot;&gt;\n\n$src$\n&lt;/div&gt;\n\\end&quot;},&quot;$:/plugins/kookma/shiraz/macros/space&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/space&quot;,&quot;created&quot;:&quot;20170629183034888&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191018071347789&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define vspace(height)\n&lt;p style=\&quot;margin-bottom: $height$;\&quot;&gt;&lt;/p&gt;\n\\end\n\n\\define hspace(width)\n&lt;span style=\&quot;margin-left: $width$;\&quot;&gt;&lt;/span&gt;\n\\end\n\n!! Utility macros\nThis tiddler contains the user defined macros. Edit to see the code.\n\n|table-borderless|k\n|''vspace(height)'' |create a vertical space using an empty paragraph |\n|''hspace(width)'' |create horizontal space using an empty span |&quot;},&quot;$:/plugins/kookma/shiraz/macros/text-utility&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/macros/text-utility&quot;,&quot;created&quot;:&quot;20181101154956345&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191018074305470&quot;,&quot;tags&quot;:&quot;$:/tags/Macro&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;\\define tc(src:\&quot;\&quot;, color:\&quot;red\&quot;) &lt;span style=\&quot;color:$color$;\&quot;&gt;$src$&lt;/span&gt;\n\\define bc(src:\&quot;\&quot;, color:\&quot;yellow\&quot;) &lt;span style=\&quot;background-color:$color$;\&quot;&gt;$src$&lt;/span&gt;\n\\define mono(src:\&quot;\&quot;, class:\&quot;\&quot;) &lt;code class=\&quot;mono $class$\&quot;&gt;$src$&lt;/code&gt;&quot;},&quot;$:/plugins/kookma/shiraz/readme&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/readme&quot;,&quot;created&quot;:&quot;20190901192929450&quot;,&quot;modified&quot;:&quot;20191013035840717&quot;,&quot;tags&quot;:&quot;&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;Shiraz is a small framework inclusing stylesheets and macros to create stylish contents in Tiddlywiki. It has modified CSS classes from Bootstrap 4.1.3. Shiraz has customized elements like alerts, cards, panels, images, tables, badges, texts, ...\n\nFor tutorial and download see\n\nhttps://kookma.github.io/Shiraz/\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/alerts-leftbar&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/alerts-leftbar&quot;,&quot;created&quot;:&quot;20181208184228896&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056580&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.leftbar{\n  border-width:0px !important;\n  border-radius:0px !important;\n  border-left-width: 5px !important;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/alerts&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/alerts&quot;,&quot;created&quot;:&quot;20180820171551129&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056577&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*Was taken from bootstrap 4.1.3*/\n.alert {\n  position: relative;\n  padding: 0.75rem 1.25rem;\n  margin-bottom: 1rem;\n  border: 1px solid transparent;\n  border-radius: 0.25rem;\n}\n.alert-primary {\n  color: #004085;\n  background-color: #cce5ff;\n  border-color: #b8daff;\n}\n\n.alert-primary hr {\n  border-top-color: #9fcdff;\n}\n.alert-secondary {\n  color: #383d41;\n  background-color: #e2e3e5;\n  border-color: #d6d8db;\n}\n\n.alert-secondary hr {\n  border-top-color: #c8cbcf;\n}\n\n.alert-success {\n  color: #155724;\n  background-color: #d4edda;\n  border-color: #c3e6cb;\n}\n\n.alert-success hr {\n  border-top-color: #b1dfbb;\n}\n.alert-info {\n  color: #0c5460;\n  background-color: #d1ecf1;\n  border-color: #bee5eb;\n}\n\n.alert-info hr {\n  border-top-color: #abdde5;\n}\n.alert-warning {\n  color: #856404;\n  background-color: #fff3cd;\n  border-color: #ffeeba;\n}\n\n.alert-warning hr {\n  border-top-color: #ffe8a1;\n}\n\n.alert-danger {\n  color: #721c24;\n  background-color: #f8d7da;\n  border-color: #f5c6cb;\n}\n\n.alert-danger hr {\n  border-top-color: #f1b0b7;\n}\n.alert-light {\n  color: #818182;\n  background-color: #fefefe;\n  border-color: #fdfdfe;\n}\n\n.alert-light hr {\n  border-top-color: #ececf6;\n}\n.alert-dark {\n  color: #1b1e21;\n  background-color: #d6d8d9;\n  border-color: #c6c8ca;\n}\n\n.alert-dark hr {\n  border-top-color: #b9bbbe;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/background-colors&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/background-colors&quot;,&quot;created&quot;:&quot;20180820170518161&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056574&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.bg-primary {\n  background-color: #007bff !important;\n}\n\na.bg-primary:hover, a.bg-primary:focus,\nbutton.bg-primary:hover,\nbutton.bg-primary:focus {\n  background-color: #0062cc !important;\n}\n\n.bg-secondary {\n  background-color: #6c757d !important;\n}\n\na.bg-secondary:hover, a.bg-secondary:focus,\nbutton.bg-secondary:hover,\nbutton.bg-secondary:focus {\n  background-color: #545b62 !important;\n}\n\n.bg-success {\n  background-color: #28a745 !important;\n}\n\na.bg-success:hover, a.bg-success:focus,\nbutton.bg-success:hover,\nbutton.bg-success:focus {\n  background-color: #1e7e34 !important;\n}\n\n.bg-info {\n  background-color: #17a2b8 !important;\n}\n\na.bg-info:hover, a.bg-info:focus,\nbutton.bg-info:hover,\nbutton.bg-info:focus {\n  background-color: #117a8b !important;\n}\n\n.bg-warning {\n  background-color: #ffc107 !important;\n}\n\na.bg-warning:hover, a.bg-warning:focus,\nbutton.bg-warning:hover,\nbutton.bg-warning:focus {\n  background-color: #d39e00 !important;\n}\n\n.bg-danger {\n  background-color: #dc3545 !important;\n}\n\na.bg-danger:hover, a.bg-danger:focus,\nbutton.bg-danger:hover,\nbutton.bg-danger:focus {\n  background-color: #bd2130 !important;\n}\n\n.bg-light {\n  background-color: #f8f9fa !important;\n}\n\na.bg-light:hover, a.bg-light:focus,\nbutton.bg-light:hover,\nbutton.bg-light:focus {\n  background-color: #dae0e5 !important;\n}\n\n.bg-dark {\n  background-color: #343a40 !important;\n}\n\na.bg-dark:hover, a.bg-dark:focus,\nbutton.bg-dark:hover,\nbutton.bg-dark:focus {\n  background-color: #1d2124 !important;\n}\n\n.bg-white {\n  background-color: #fff !important;\n}\n\n.bg-transparent {\n  background-color: transparent !important;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/badge&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/badge&quot;,&quot;created&quot;:&quot;20181122140031075&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056572&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n.badge {\n  display: inline-block;\n  padding: 0.25em 0.4em;\n  font-size: 75%;\n  font-weight: 700;\n  line-height: 1;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: 0.25rem;\n}\n\n.badge:empty {\n  display: none;\n}\n\n.btn .badge {\n  position: relative;\n  top: -1px;\n}\n\n.badge-pill {\n  padding-right: 0.6em;\n  padding-left: 0.6em;\n  border-radius: 10rem;\n}\n\n.badge-primary {\n  color: #fff;\n  background-color: #007bff;\n}\n\n.badge-primary[href]:hover, .badge-primary[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #0062cc;\n}\n\n.badge-secondary {\n  color: #fff;\n  background-color: #6c757d;\n}\n\n.badge-secondary[href]:hover, .badge-secondary[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #545b62;\n}\n\n.badge-success {\n  color: #fff;\n  background-color: #28a745;\n}\n\n.badge-success[href]:hover, .badge-success[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #1e7e34;\n}\n\n.badge-info {\n  color: #fff;\n  background-color: #17a2b8;\n}\n\n.badge-info[href]:hover, .badge-info[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #117a8b;\n}\n\n.badge-warning {\n  color: #212529;\n  background-color: #ffc107;\n}\n\n.badge-warning[href]:hover, .badge-warning[href]:focus {\n  color: #212529;\n  text-decoration: none;\n  background-color: #d39e00;\n}\n\n.badge-danger {\n  color: #fff;\n  background-color: #dc3545;\n}\n\n.badge-danger[href]:hover, .badge-danger[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #bd2130;\n}\n\n.badge-light {\n  color: #212529;\n  background-color: #f8f9fa;\n}\n\n.badge-light[href]:hover, .badge-light[href]:focus {\n  color: #212529;\n  text-decoration: none;\n  background-color: #dae0e5;\n}\n\n.badge-dark {\n  color: #fff;\n  background-color: #343a40;\n}\n\n.badge-dark[href]:hover, .badge-dark[href]:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #1d2124;\n}\n\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/borders&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/borders&quot;,&quot;created&quot;:&quot;20180820174710383&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056569&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.border {\n  border: 1px solid #dee2e6 !important;\n}\n\n.border-top {\n  border-top: 1px solid #dee2e6 !important;\n}\n\n.border-right {\n  border-right: 1px solid #dee2e6 !important;\n}\n\n.border-bottom {\n  border-bottom: 1px solid #dee2e6 !important;\n}\n\n.border-left {\n  border-left: 1px solid #dee2e6 !important;\n}\n\n.border-0 {\n  border: 0 !important;\n}\n\n.border-top-0 {\n  border-top: 0 !important;\n}\n\n.border-right-0 {\n  border-right: 0 !important;\n}\n\n.border-bottom-0 {\n  border-bottom: 0 !important;\n}\n\n.border-left-0 {\n  border-left: 0 !important;\n}\n\n.border-primary {\n  border-color: #007bff !important;\n}\n\n.border-secondary {\n  border-color: #6c757d !important;\n}\n\n.border-success {\n  border-color: #28a745 !important;\n}\n\n.border-info {\n  border-color: #17a2b8 !important;\n}\n\n.border-warning {\n  border-color: #ffc107 !important;\n}\n\n.border-danger {\n  border-color: #dc3545 !important;\n}\n\n.border-light {\n  border-color: #f8f9fa !important;\n}\n\n.border-dark {\n  border-color: #343a40 !important;\n}\n\n.border-white {\n  border-color: #fff !important;\n}\n\n.rounded {\n  border-radius: 0.25rem !important;\n}\n\n.rounded-top {\n  border-top-left-radius: 0.25rem !important;\n  border-top-right-radius: 0.25rem !important;\n}\n\n.rounded-right {\n  border-top-right-radius: 0.25rem !important;\n  border-bottom-right-radius: 0.25rem !important;\n}\n\n.rounded-bottom {\n  border-bottom-right-radius: 0.25rem !important;\n  border-bottom-left-radius: 0.25rem !important;\n}\n\n.rounded-left {\n  border-top-left-radius: 0.25rem !important;\n  border-bottom-left-radius: 0.25rem !important;\n}\n\n.rounded-circle {\n  border-radius: 50% !important;\n}\n\n.rounded-0 {\n  border-radius: 0 !important;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/btn-size&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/btn-size&quot;,&quot;created&quot;:&quot;20181130201725271&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056560&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Button and btn classes Mohammad*/\n\n.btn-lg{\n  padding: 0.5rem 1rem;\n  font-size: 1.25rem;\n  line-height: 1.5;\n  border-radius: 0.3rem;\n}\n\n.btn-sm{\n  padding: 0.25rem 0.5rem;\n  font-size: 0.875rem;\n  line-height: 1.5;\n  border-radius: 0.2rem;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/btn&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/btn&quot;,&quot;created&quot;:&quot;20180822044340070&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056563&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Button and btn classes Mohammad*/\n.btn {\n  display: inline-block;\n  font-weight: 400;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  border: 1px solid transparent;\n  padding: 0.375rem 0.75rem;\n  font-size: 1rem;\n  line-height: 1.5;\n  border-radius: 0.25rem;\n  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n\n\n.btn:hover, .btn:focus {\n  text-decoration: none;\n}\n\n.btn:focus, .btn.focus {\n  outline: 0;\n  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);\n}\n\n.btn.disabled, .btn:disabled {\n  opacity: 0.65;\n}\n\n.btn:not(:disabled):not(.disabled) {\n  cursor: pointer;\n}\n\na.btn.disabled,\nfieldset:disabled a.btn {\n  pointer-events: none;\n}\n\n.btn-primary {\n  color: #fff;\n  background-color: #007bff;\n  border-color: #007bff;\n}\n\n.btn-primary:hover {\n  color: #fff;\n  background-color: #0069d9;\n  border-color: #0062cc;\n}\n\n.btn-primary:focus, .btn-primary.focus {\n  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);\n}\n\n.btn-primary.disabled, .btn-primary:disabled {\n  color: #fff;\n  background-color: #007bff;\n  border-color: #007bff;\n}\n\n.btn-secondary {\n  color: #fff;\n  background-color: #6c757d;\n  border-color: #6c757d;\n}\n\n.btn-secondary:hover {\n  color: #fff;\n  background-color: #5a6268;\n  border-color: #545b62;\n}\n\n.btn-secondary:focus, .btn-secondary.focus {\n  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);\n}\n\n.btn-secondary.disabled, .btn-secondary:disabled {\n  color: #fff;\n  background-color: #6c757d;\n  border-color: #6c757d;\n}\n\n.btn-success {\n  color: #fff;\n  background-color: #28a745;\n  border-color: #28a745;\n}\n\n.btn-success:hover {\n  color: #fff;\n  background-color: #218838;\n  border-color: #1e7e34;\n}\n\n.btn-success:focus, .btn-success.focus {\n  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);\n}\n\n.btn-success.disabled, .btn-success:disabled {\n  color: #fff;\n  background-color: #28a745;\n  border-color: #28a745;\n}\n\n.btn-info {\n  color: #fff;\n  background-color: #17a2b8;\n  border-color: #17a2b8;\n}\n\n.btn-info:hover {\n  color: #fff;\n  background-color: #138496;\n  border-color: #117a8b;\n}\n\n.btn-info:focus, .btn-info.focus {\n  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);\n}\n\n.btn-info.disabled, .btn-info:disabled {\n  color: #fff;\n  background-color: #17a2b8;\n  border-color: #17a2b8;\n}\n\n.btn-warning {\n  color: #212529;\n  background-color: #ffc107;\n  border-color: #ffc107;\n}\n\n.btn-warning:hover {\n  color: #212529;\n  background-color: #e0a800;\n  border-color: #d39e00;\n}\n\n.btn-warning:focus, .btn-warning.focus {\n  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);\n}\n\n.btn-warning.disabled, .btn-warning:disabled {\n  color: #212529;\n  background-color: #ffc107;\n  border-color: #ffc107;\n}\n\n.btn-danger {\n  color: #fff;\n  background-color: #dc3545;\n  border-color: #dc3545;\n}\n\n.btn-danger:hover {\n  color: #fff;\n  background-color: #c82333;\n  border-color: #bd2130;\n}\n\n.btn-danger:focus, .btn-danger.focus {\n  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);\n}\n\n.btn-danger.disabled, .btn-danger:disabled {\n  color: #fff;\n  background-color: #dc3545;\n  border-color: #dc3545;\n}\n\n.btn-light {\n  color: #212529;\n  background-color: #f8f9fa;\n  border-color: #f8f9fa;\n}\n\n.btn-light:hover {\n  color: #212529;\n  background-color: #e2e6ea;\n  border-color: #dae0e5;\n}\n\n.btn-light:focus, .btn-light.focus {\n  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);\n}\n\n.btn-light.disabled, .btn-light:disabled {\n  color: #212529;\n  background-color: #f8f9fa;\n  border-color: #f8f9fa;\n}\n\n.btn-dark {\n  color: #fff;\n  background-color: #343a40;\n  border-color: #343a40;\n}\n\n.btn-dark:hover {\n  color: #fff;\n  background-color: #23272b;\n  border-color: #1d2124;\n}\n\n.btn-dark:focus, .btn-dark.focus {\n  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);\n}\n\n.btn-dark.disabled, .btn-dark:disabled {\n  color: #fff;\n  background-color: #343a40;\n  border-color: #343a40;\n}\n\n.btn-link {\n  font-weight: 400;\n  color: #007bff;\n  background-color: transparent;\n}\n\n.btn-link:hover {\n  color: #0056b3;\n  text-decoration: underline;\n  background-color: transparent;\n  border-color: transparent;\n}\n\n.btn-link:focus, .btn-link.focus {\n  text-decoration: underline;\n  border-color: transparent;\n  box-shadow: none;\n}\n\n.btn-link:disabled, .btn-link.disabled {\n  color: #6c757d;\n  pointer-events: none;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-column&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-column&quot;,&quot;created&quot;:&quot;20181122175345419&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056555&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n.card-columns .card {\n  margin-bottom: 0.75rem;\n}\n\n@media (min-width: 576px) {\n  .card-columns {\n    -webkit-column-count: 3;\n    -moz-column-count: 3;\n    column-count: 3;\n    -webkit-column-gap: 1.25rem;\n    -moz-column-gap: 1.25rem;\n    column-gap: 1.25rem;\n    orphans: 1;\n    widows: 1;\n  }\n  .card-columns .card {\n    display: inline-block;\n    width: 100%;\n  }\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-deck&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-deck&quot;,&quot;created&quot;:&quot;20180822174847352&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056551&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n\n.card-deck {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n}\n\n.card-deck .card {\n  margin-bottom: 15px;\n}\n\n@media (min-width: 576px) {\n  .card-deck {\n    -ms-flex-flow: row wrap;\n    flex-flow: row wrap;\n    margin-right: -15px;\n    margin-left: -15px;\n  }\n  .card-deck .card {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex: 1 0 0%;\n    flex: 1 0 0%;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    margin-right: 15px;\n    margin-bottom: 0;\n    margin-left: 15px;\n  }\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-group&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card-group&quot;,&quot;created&quot;:&quot;20181122175111676&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056547&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n.card-group {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n}\n\n.card-group &gt; .card {\n  margin-bottom: 15px;\n}\n\n@media (min-width: 576px) {\n  .card-group {\n    -ms-flex-flow: row wrap;\n    flex-flow: row wrap;\n  }\n  .card-group &gt; .card {\n    -ms-flex: 1 0 0%;\n    flex: 1 0 0%;\n    margin-bottom: 0;\n  }\n  .card-group &gt; .card + .card {\n    margin-left: 0;\n    border-left: 0;\n  }\n  .card-group &gt; .card:first-child {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0;\n  }\n  .card-group &gt; .card:first-child .card-img-top,\n  .card-group &gt; .card:first-child .card-header {\n    border-top-right-radius: 0;\n  }\n  .card-group &gt; .card:first-child .card-img-bottom,\n  .card-group &gt; .card:first-child .card-footer {\n    border-bottom-right-radius: 0;\n  }\n  .card-group &gt; .card:last-child {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0;\n  }\n  .card-group &gt; .card:last-child .card-img-top,\n  .card-group &gt; .card:last-child .card-header {\n    border-top-left-radius: 0;\n  }\n  .card-group &gt; .card:last-child .card-img-bottom,\n  .card-group &gt; .card:last-child .card-footer {\n    border-bottom-left-radius: 0;\n  }\n  .card-group &gt; .card:only-child {\n    border-radius: 0.25rem;\n  }\n  .card-group &gt; .card:only-child .card-img-top,\n  .card-group &gt; .card:only-child .card-header {\n    border-top-left-radius: 0.25rem;\n    border-top-right-radius: 0.25rem;\n  }\n  .card-group &gt; .card:only-child .card-img-bottom,\n  .card-group &gt; .card:only-child .card-footer {\n    border-bottom-right-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .card-group &gt; .card:not(:first-child):not(:last-child):not(:only-child) {\n    border-radius: 0;\n  }\n  .card-group &gt; .card:not(:first-child):not(:last-child):not(:only-child) .card-img-top,\n  .card-group &gt; .card:not(:first-child):not(:last-child):not(:only-child) .card-img-bottom,\n  .card-group &gt; .card:not(:first-child):not(:last-child):not(:only-child) .card-header,\n  .card-group &gt; .card:not(:first-child):not(:last-child):not(:only-child) .card-footer {\n    border-radius: 0;\n  }\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/card&quot;,&quot;created&quot;:&quot;20180822174608965&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056557&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n.card {\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #fff;\n  background-clip: border-box;\n  border: 1px solid rgba(0, 0, 0, 0.125);\n  border-radius: 0.25rem;\n}\n\n.card &gt; hr {\n  margin-right: 0;\n  margin-left: 0;\n}\n\n.card &gt; .list-group:first-child .list-group-item:first-child {\n  border-top-left-radius: 0.25rem;\n  border-top-right-radius: 0.25rem;\n}\n\n.card &gt; .list-group:last-child .list-group-item:last-child {\n  border-bottom-right-radius: 0.25rem;\n  border-bottom-left-radius: 0.25rem;\n}\n\n.card-body {\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  padding: 1.25rem;\n}\n\n.card-title {\n  margin-bottom: 0.75rem;\n}\n\n.card-subtitle {\n  margin-top: -0.375rem;\n  margin-bottom: 0;\n}\n\n.card-text:last-child {\n  margin-bottom: 0;\n}\n\n.card-link:hover {\n  text-decoration: none;\n}\n\n.card-link + .card-link {\n  margin-left: 1.25rem;\n}\n\n.card-header {\n  padding: 0.75rem 1.25rem;\n  margin-bottom: 0;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n}\n\n.card-header:first-child {\n  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;\n}\n\n.card-header + .list-group .list-group-item:first-child {\n  border-top: 0;\n}\n\n.card-footer {\n  padding: 0.75rem 1.25rem;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-top: 1px solid rgba(0, 0, 0, 0.125);\n}\n\n.card-footer:last-child {\n  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);\n}\n\n.card-header-tabs {\n  margin-right: -0.625rem;\n  margin-bottom: -0.75rem;\n  margin-left: -0.625rem;\n  border-bottom: 0;\n}\n\n.card-header-pills {\n  margin-right: -0.625rem;\n  margin-left: -0.625rem;\n}\n\n.card-img-overlay {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1.25rem;\n}\n\n.card-img {\n  width: 100%;\n  border-radius: calc(0.25rem - 1px);\n}\n\n.card-img-top {\n  width: 100%;\n  border-top-left-radius: calc(0.25rem - 1px);\n  border-top-right-radius: calc(0.25rem - 1px);\n}\n\n.card-img-bottom {\n  width: 100%;\n  border-bottom-right-radius: calc(0.25rem - 1px);\n  border-bottom-left-radius: calc(0.25rem - 1px);\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/clearfix&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/clearfix&quot;,&quot;created&quot;:&quot;20190919042042391&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056544&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.clearfix::after {\n  display: block;\n  clear: both;\n  content: \&quot;\&quot;;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/float&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/float&quot;,&quot;created&quot;:&quot;20180823142040855&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056541&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.float-left {\n  float: left;\n}\n\n.float-right {\n  float: right;\n}\n\n.float-none {\n  float: none;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/my-adjustment&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/my-adjustment&quot;,&quot;created&quot;:&quot;20180822044831813&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056538&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* My adjustments to bootstrap 4.1.3 css classes */\na {\n  color: #007bff;\n  text-decoration: none;\n  background-color: transparent;\n  -webkit-text-decoration-skip: objects;\n}\n/* Link is hacked to be compatible with bootstrap \nclasses remove it if the TW core objects break\n*/\n\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/shadow&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/shadow&quot;,&quot;created&quot;:&quot;20180823114259911&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056534&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.shadow-sm {\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n\n.shadow {\n  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;\n}\n\n.shadow-lg {\n  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;\n}\n\n.shadow-none {\n  box-shadow: none !important;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/sizing-spacing&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/sizing-spacing&quot;,&quot;created&quot;:&quot;20180822191952379&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056529&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Extracted from bootstrap 4.1.3 */\n/*Defines margins, paddings, width and height*/\n.w-25 {\n  width: 25% !important;\n}\n.w-50 {\n  width: 50% !important;\n}\n.w-75 {\n  width: 75% !important;\n}\n.w-100 {\n  width: 100% !important;\n}\n.w-auto {\n  width: auto !important;\n}\n.h-25 {\n  height: 25% !important;\n}\n.h-50 {\n  height: 50% !important;\n}\n.h-75 {\n  height: 75% !important;\n}\n.h-100 {\n  height: 100% !important;\n}\n.h-auto {\n  height: auto !important;\n}\n.mw-100 {\n  max-width: 100% !important;\n}\n.mh-100 {\n  max-height: 100% !important;\n}\n.m-0 {\n  margin: 0 !important;\n}\n.mt-0,\n.my-0 {\n  margin-top: 0 !important;\n}\n.mr-0,\n.mx-0 {\n  margin-right: 0 !important;\n}\n.mb-0,\n.my-0 {\n  margin-bottom: 0 !important;\n}\n.ml-0,\n.mx-0 {\n  margin-left: 0 !important;\n}\n.m-1 {\n  margin: 0.25rem !important;\n}\n.mt-1,\n.my-1 {\n  margin-top: 0.25rem !important;\n}\n.mr-1,\n.mx-1 {\n  margin-right: 0.25rem !important;\n}\n.mb-1,\n.my-1 {\n  margin-bottom: 0.25rem !important;\n}\n.ml-1,\n.mx-1 {\n  margin-left: 0.25rem !important;\n}\n.m-2 {\n  margin: 0.5rem !important;\n}\n.mt-2,\n.my-2 {\n  margin-top: 0.5rem !important;\n}\n.mr-2,\n.mx-2 {\n  margin-right: 0.5rem !important;\n}\n.mb-2,\n.my-2 {\n  margin-bottom: 0.5rem !important;\n}\n.ml-2,\n.mx-2 {\n  margin-left: 0.5rem !important;\n}\n\n.m-3 {\n  margin: 1rem !important;\n}\n\n.mt-3,\n.my-3 {\n  margin-top: 1rem !important;\n}\n\n.mr-3,\n.mx-3 {\n  margin-right: 1rem !important;\n}\n\n.mb-3,\n.my-3 {\n  margin-bottom: 1rem !important;\n}\n\n.ml-3,\n.mx-3 {\n  margin-left: 1rem !important;\n}\n\n.m-4 {\n  margin: 1.5rem !important;\n}\n\n.mt-4,\n.my-4 {\n  margin-top: 1.5rem !important;\n}\n\n.mr-4,\n.mx-4 {\n  margin-right: 1.5rem !important;\n}\n\n.mb-4,\n.my-4 {\n  margin-bottom: 1.5rem !important;\n}\n\n.ml-4,\n.mx-4 {\n  margin-left: 1.5rem !important;\n}\n\n.m-5 {\n  margin: 3rem !important;\n}\n\n.mt-5,\n.my-5 {\n  margin-top: 3rem !important;\n}\n\n.mr-5,\n.mx-5 {\n  margin-right: 3rem !important;\n}\n\n.mb-5,\n.my-5 {\n  margin-bottom: 3rem !important;\n}\n\n.ml-5,\n.mx-5 {\n  margin-left: 3rem !important;\n}\n\n.p-0 {\n  padding: 0 !important;\n}\n\n.pt-0,\n.py-0 {\n  padding-top: 0 !important;\n}\n\n.pr-0,\n.px-0 {\n  padding-right: 0 !important;\n}\n\n.pb-0,\n.py-0 {\n  padding-bottom: 0 !important;\n}\n\n.pl-0,\n.px-0 {\n  padding-left: 0 !important;\n}\n\n.p-1 {\n  padding: 0.25rem !important;\n}\n\n.pt-1,\n.py-1 {\n  padding-top: 0.25rem !important;\n}\n\n.pr-1,\n.px-1 {\n  padding-right: 0.25rem !important;\n}\n\n.pb-1,\n.py-1 {\n  padding-bottom: 0.25rem !important;\n}\n\n.pl-1,\n.px-1 {\n  padding-left: 0.25rem !important;\n}\n\n.p-2 {\n  padding: 0.5rem !important;\n}\n\n.pt-2,\n.py-2 {\n  padding-top: 0.5rem !important;\n}\n\n.pr-2,\n.px-2 {\n  padding-right: 0.5rem !important;\n}\n\n.pb-2,\n.py-2 {\n  padding-bottom: 0.5rem !important;\n}\n\n.pl-2,\n.px-2 {\n  padding-left: 0.5rem !important;\n}\n\n.p-3 {\n  padding: 1rem !important;\n}\n\n.pt-3,\n.py-3 {\n  padding-top: 1rem !important;\n}\n\n.pr-3,\n.px-3 {\n  padding-right: 1rem !important;\n}\n\n.pb-3,\n.py-3 {\n  padding-bottom: 1rem !important;\n}\n\n.pl-3,\n.px-3 {\n  padding-left: 1rem !important;\n}\n\n.p-4 {\n  padding: 1.5rem !important;\n}\n\n.pt-4,\n.py-4 {\n  padding-top: 1.5rem !important;\n}\n\n.pr-4,\n.px-4 {\n  padding-right: 1.5rem !important;\n}\n\n.pb-4,\n.py-4 {\n  padding-bottom: 1.5rem !important;\n}\n\n.pl-4,\n.px-4 {\n  padding-left: 1.5rem !important;\n}\n\n.p-5 {\n  padding: 3rem !important;\n}\n\n.pt-5,\n.py-5 {\n  padding-top: 3rem !important;\n}\n\n.pr-5,\n.px-5 {\n  padding-right: 3rem !important;\n}\n\n.pb-5,\n.py-5 {\n  padding-bottom: 3rem !important;\n}\n\n.pl-5,\n.px-5 {\n  padding-left: 3rem !important;\n}\n\n.m-auto {\n  margin: auto !important;\n}\n\n.mt-auto,\n.my-auto {\n  margin-top: auto !important;\n}\n\n.mr-auto,\n.mx-auto {\n  margin-right: auto !important;\n}\n\n.mb-auto,\n.my-auto {\n  margin-bottom: auto !important;\n}\n\n.ml-auto,\n.mx-auto {\n  margin-left: auto !important;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-alignment&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-alignment&quot;,&quot;created&quot;:&quot;20180822051223866&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056524&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.text-justify {\n  text-align: justify !important;\n}\n\n.text-nowrap {\n  white-space: nowrap !important;\n}\n\n.text-truncate {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.text-left {\n  text-align: left !important;\n}\n\n.text-right {\n  text-align: right !important;\n}\n\n.text-center {\n  text-align: center !important;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-colors&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-colors&quot;,&quot;created&quot;:&quot;20180820173351023&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056521&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* from bootstrap 4.1.3 */\n\n.text-white {\n  color: #fff !important;\n}\n\n.text-primary {\n  color: #007bff !important;\n}\n\na.text-primary:hover, a.text-primary:focus {\n  color: #0062cc !important;\n}\n\n.text-secondary {\n  color: #6c757d !important;\n}\n\na.text-secondary:hover, a.text-secondary:focus {\n  color: #545b62 !important;\n}\n\n.text-success {\n  color: #28a745 !important;\n}\n\na.text-success:hover, a.text-success:focus {\n  color: #1e7e34 !important;\n}\n\n.text-info {\n  color: #17a2b8 !important;\n}\n\na.text-info:hover, a.text-info:focus {\n  color: #117a8b !important;\n}\n\n.text-warning {\n  color: #ffc107 !important;\n}\n\na.text-warning:hover, a.text-warning:focus {\n  color: #d39e00 !important;\n}\n\n.text-danger {\n  color: #dc3545 !important;\n}\n\na.text-danger:hover, a.text-danger:focus {\n  color: #bd2130 !important;\n}\n\n.text-light {\n  color: #f8f9fa !important;\n}\n\na.text-light:hover, a.text-light:focus {\n  color: #dae0e5 !important;\n}\n\n.text-dark {\n  color: #343a40 !important;\n}\n\na.text-dark:hover, a.text-dark:focus {\n  color: #1d2124 !important;\n}\n\n.text-body {\n  color: #212529 !important;\n}\n\n.text-muted {\n  color: #6c757d !important;\n}\n\n.text-black-50 {\n  color: rgba(0, 0, 0, 0.5) !important;\n}\n\n.text-white-50 {\n  color: rgba(255, 255, 255, 0.5) !important;\n}\n\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-utility&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/bs/text-utility&quot;,&quot;created&quot;:&quot;20180822130528002&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056518&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Can be removed latter. This is used for illustration of bootstrap cards */\n\n.text-lowercase {\n  text-transform: lowercase !important;\n}\n\n.text-uppercase {\n  text-transform: uppercase !important;\n}\n\n.text-capitalize {\n  text-transform: capitalize !important;\n}\n\n.font-weight-light {\n  font-weight: 300 !important;\n}\n\n.font-weight-normal {\n  font-weight: 400 !important;\n}\n\n.font-weight-bold {\n  font-weight: 700 !important;\n}\n\n.font-italic {\n  font-style: italic !important;\n}\n\n\n.h1, .h2, .h3, .h4, .h5, .h6 {\n  margin-bottom: 0.5rem;\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.2;\n  color: inherit;\n}\n\n.h1 {\n  font-size: 2.5rem;\n}\n\n.h2 {\n  font-size: 2rem;\n}\n\n.h3 {\n  font-size: 1.75rem;\n}\n\n.h4 {\n  font-size: 1.5rem;\n}\n\n.h5 {\n  font-size: 1.25rem;\n}\n\n.h6 {\n  font-size: 1rem;\n}\n\n.lead {\n  font-size: 1.25rem;\n  font-weight: 300;\n}\n\n.display-1 {\n  font-size: 6rem;\n  font-weight: 300;\n  line-height: 1.2;\n}\n\n.display-2 {\n  font-size: 5.5rem;\n  font-weight: 300;\n  line-height: 1.2;\n}\n\n.display-3 {\n  font-size: 4.5rem;\n  font-weight: 300;\n  line-height: 1.2;\n}\n\n.display-4 {\n  font-size: 3.5rem;\n  font-weight: 300;\n  line-height: 1.2;\n}\n\n.hr {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n  border: 0;\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\n}\n\n.small {\n  font-size: 80%;\n  font-weight: 400;\n}\n\n.mark {\n  padding: 0.2em;\n  background-color: #fcf8e3;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/clear-float&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/clear-float&quot;,&quot;created&quot;:&quot;20190902043605186&quot;,&quot;modified&quot;:&quot;20191013035840615&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Resolve issue for floating objects which cross the tiddler frame!\nThe below code should force the tiddler to always wrap around floating elements, so that they are always inside\nRef: https://groups.google.com/d/msg/tiddlywiki/5bZwwj6cyac/2LzFeA7AAwAJ\n*/\n\n.tc-tiddler-body:before, .tc-tiddler-body:after {\n    content: \&quot;\&quot;;\n    display: table;\n}\n.tc-tiddler-body:after {\n    clear: both;\n}\n.tc-tiddler-body {\n    zoom: 1;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/dbadge&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/dbadge&quot;,&quot;created&quot;:&quot;20181204192835967&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056512&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*Credits: \nNishant Srivastava https://codepen.io/nisrulz/pen/bpQWLW\nMohammad Rahmani: https://github.com/kookma\n*/\n.dbadge {\n display: inline-block;\n margin: 0.0em;\n}\n.dbadge &gt; span {\n  color: #ffffff;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1;\n  padding: .2em .6em;\n  text-align: center;\n  vertical-align: baseline;\n  white-space: nowrap;}\n\n.dbadge-subject{\n  background-color: #656565;\n  border-bottom-left-radius: 0.25em;\n  border-top-left-radius: 0.25em;}\n.dbadge-status {\n  border-bottom-right-radius: 0.25em;\n  border-top-right-radius: 0.25em;}\n\n.dbadge-primary {\n    background-color: #337ab7;}\n.dbadge-success {\n    background-color: #5cb85c;}\n.dbadge-info {\n    background-color: #5bc0de;}\n.dbadge-warning {\n    background-color: #f0ad4e;}\n.dbadge-danger {\n    background-color: #d9534f;}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/details&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/details&quot;,&quot;created&quot;:&quot;20181101185908941&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056509&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*details html5 macro*/\ndetails &gt; summary {\n  padding: 2px 6px;\n  background-color: #efebe9;\n  font-weight:500;\n  outline:none;\n}\ndetails &gt; div {\n  background-color: #fffef9;\n  padding: 2px 6px;\n  margin: 0;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-alignment&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-alignment&quot;,&quot;created&quot;:&quot;20190918193736314&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191019075823058&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*Image aligning classes*/\n.image-align-right{\n    float:right;\n    margin:0.5em 0 1.3em 1.4em;\n}\n.image-align-left{\n    float:left;\n    margin: 0.5em 1.4em 1.3em 0;\n}\n.image-align-center{\n  display:block;\n  margin: 0.5em auto 1.3em; \n}\n\n.image-float-none {\n  float: none !important;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-basic&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-basic&quot;,&quot;created&quot;:&quot;20181119182848505&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056501&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.image-simple {\n  text-align: center;\n  font-style: italic;\n  font-size: smaller;\n  text-indent: 0;\n  padding: 0.5em;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-overlay&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-overlay&quot;,&quot;created&quot;:&quot;20181116173704182&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056496&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.image-overlay-container{\n  width: 50%; \n  box-sizing: border-box;\n}\n\n@media screen and (max-width: 640px){\n  .image-overlay-container{\n    display: block;\n    width: 100%;\n  }\n}\n\n@media screen and (min-width: 900px){\n  .image-overlay-container{\n    width: 33.33%;\n  }\n}\n\n.image-overlay-container .image-overlay-title{\n  color: #1a1a1a;\n  text-align: center;\n  margin-bottom:10px;\n}\n\n.image-overlay-content {\n  position: relative;\n  width: 90%;\n  max-width: 400px;\n  margin: auto;\n  overflow: hidden;\n}\n\n.image-overlay-content .image-overlay-content-overlay {\n  background: rgba(0,0,0,0.7);\n  position: absolute;\n  height: 99%;\n  width: 100%;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  opacity: 0;\n  -webkit-transition: all 0.4s ease-in-out 0s;\n  -moz-transition: all 0.4s ease-in-out 0s;\n  transition: all 0.4s ease-in-out 0s;\n}\n\n.image-overlay-content:hover .image-overlay-content-overlay{\n  opacity: 1;\n}\n\n.image-overlay-content-image{\n  width: 100%;\n}\n\n.image-overlay-content-details {\n  position: absolute;\n  text-align: center;\n  padding-left: 1em;\n  padding-right: 1em;\n  width: 100%;\n  top: 50%;\n  left: 50%;\n  opacity: 0;\n  -webkit-transform: translate(-50%, -50%);\n  -moz-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  -webkit-transition: all 0.3s ease-in-out 0s;\n  -moz-transition: all 0.3s ease-in-out 0s;\n  transition: all 0.3s ease-in-out 0s;\n}\n\n.image-overlay-content:hover .image-overlay-content-details{\n  top: 50%;\n  left: 50%;\n  opacity: 1;\n}\n\n.image-overlay-content-details h3{\n  color: #fff;\n  font-weight: 500;\n  letter-spacing: 0.15em;\n  margin-bottom: 0.5em;\n  text-transform: uppercase;\n}\n\n.image-overlay-content-details p{\n  color: #fff;\n  font-size: 0.8em;\n}\n\n.image-overlay-fadeIn-bottom{\n  top: 80%;\n}\n\n.image-overlay-fadeIn-top{\n  top: 20%;\n}\n\n.image-overlay-fadeIn-left{\n  left: 20%;\n}\n\n.image-overlay-fadeIn-right{\n  left: 80%;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-polaroid&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-polaroid&quot;,&quot;created&quot;:&quot;20181116094450565&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056493&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.image-polaroid {\n  min-width:64px;\n  background-color: #f8f9fa;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.image-polaroid img {\n    width: 100%;\n    padding:10px;\n    height: auto;\n}\n.image-polaroid .image-polaroid-caption {\n    padding:10px 15px 10px;\n    text-align: center; \n    line-height: 1.4em;\n    font-weight:300;\n    font-size: 0.9em; \n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-pretty&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-pretty&quot;,&quot;created&quot;:&quot;20181115182806512&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056490&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.image-pretty {\n    min-width:64px;\n    border: 1px solid #c8ccd1;\n    background-color:#f8f9fa;\n}\n.image-pretty:hover {\n    border: 1px solid #777;\n}\n.image-pretty img {\n    padding:2px;\n    width: 100%;\n    height: auto;\n}\n.image-pretty .image-pretty-caption {\n    padding:10px 15px 10px;\n    text-align: center; \n    line-height: 1.4em;\n    font-weight:300;\n    font-size: 0.9em; \n}\n\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/image-slidein&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/image-slidein&quot;,&quot;created&quot;:&quot;20181117040213926&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056486&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.image-slidein { \n  display: block; \n  position: relative; \n  /*float: left;*/\n  overflow: hidden; \n /* margin: 0 20px 20px 0;*/\n}\n\n.image-slidein img {\n    width: 100%;\n    height: auto;\n}\n\n.image-slidein figcaption { \n  position: absolute; \n  background: rgba(0,0,0,0.75); \n  color: white; \n  padding: 10px 20px; \n  opacity: 0;\n  -webkit-transition: all 0.6s ease;\n  -moz-transition:    all 0.6s ease;\n  -o-transition:      all 0.6s ease;\n}\n.image-slidein:hover figcaption {\n  opacity: 1;\n}\n.image-slidein:before { \n  content: \&quot;?\&quot;; \n  position: absolute; \n  font-weight: 800; \n  background: rgba(255,255,255,0.75); \n  text-shadow: 0 0 5px white;\n  color: black;\n  width: 24px;\n  height: 24px;\n  -webkit-border-radius: 12px;\n  -moz-border-radius:    12px;\n  border-radius:         12px;\n  text-align: center;\n  font-size: 14px;\n  line-height: 24px;\n  -moz-transition: all 0.6s ease;\n  opacity: 0.75;\t\n}\n.image-slidein:hover:before {\n  opacity: 0;\n}\n\n.mr-cap-left:before {  bottom: 10px; left: 10px; }\n.mr-cap-left figcaption { bottom: 0; left: -30%; }\n.mr-cap-left:hover figcaption { left: 0; }\n\n.mr-cap-right:before { bottom: 10px; right: 10px; }\n.mr-cap-right figcaption { bottom: 0; right: -30%; }\n.mr-cap-right:hover figcaption { right: 0; }\n\n.mr-cap-top:before { top: 10px; left: 10px; }\n.mr-cap-top figcaption { left: 0; top: -30%; }\n.mr-cap-top:hover figcaption { top: 0; }\n\n.mr-cap-bottom:before { bottom: 10px; left: 10px; }\n.mr-cap-bottom figcaption { left: 0; bottom: -30%;}\n.mr-cap-bottom:hover figcaption { bottom: 0; }\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/mono&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/mono&quot;,&quot;created&quot;:&quot;20181010192406005&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056483&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.mono {\n\tcolor:unset;\n\tbackground-color: #f7f7f9;\n\tborder: 1px solid #e1e1e8;\n\twhite-space: pre-wrap;\n\tpadding: 0 3px 2px;\n\tborder-radius: 3px;\n\tfont-family: \&quot;SFMono-Regular\&quot;,Consolas,\&quot;Liberation Mono\&quot;,Menlo,Courier,monospace;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/column&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/column&quot;,&quot;created&quot;:&quot;20190627204703061&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191020141836225&quot;,&quot;modifier&quot;:&quot;Mohammad&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* multicolumn layouts using column selector\n- used as a tiddler tag to create two columns tiddler\n- used with div element to create two columns layout\n*/\n[data-tags~=\&quot;twocolumns\&quot;] .tc-tiddler-body {\n\tcolumn-count:2; \n\tcolumn-gap:1em; \n\tcolumn-width:200px;\n\tmargin-top:2em;\n}\n/* remove the extra space from first paragraph */\n[data-tags~=\&quot;twocolumns\&quot;] .tc-tiddler-body &gt; :first-child { margin-top: 0;}\n\n/* Multi-columns classes \n   multi-column tiddler content (not supported in Internet Explorer) */\n\n.twocolumns { \n\tdisplay:block;\n\tcolumn-count:2;\n\tcolumn-width:50%;\n}\n\n.threecolumns {\n\tdisplay:block;\n\tcolumn-count:3;\n\tcolumn-width:33%;\n}\n.fourcolumns {\n\tdisplay:block;\n\tcolumn-count:4;\n\tcolumn-width:25%;\n}\n/* Remove the extra space specially when there is a heading as first child.*/\n.twocolumns   &gt; :first-child,\n.threecolumns &gt; :first-child,\n.fourcolumns  &gt; :first-child {\n\tmargin-top: 0;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/flex&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/flex&quot;,&quot;created&quot;:&quot;20191014193910006&quot;,&quot;modified&quot;:&quot;20191018054433745&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* multicolumn layout using flex for div elements*/\n.flex-row {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  margin-right: -15px;\n  margin-left: -15px;\n}\n.flex-col {\n  position: relative;\n  width: 100%;\n  padding-right: 15px;\n  padding-left: 15px;\n}\n\n.flex-col {\n  -ms-flex-preferred-size: 0;\n  flex-basis: 0;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n  max-width: 100%;\n}&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/storyriver&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/multicols/storyriver&quot;,&quot;created&quot;:&quot;20140523214749659&quot;,&quot;creator&quot;:&quot;Rustem&quot;,&quot;modified&quot;:&quot;20191018054503185&quot;,&quot;modifier&quot;:&quot;Mohammad&quot;,&quot;story-ncols&quot;:&quot;2&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* create story river in two column layout */\n.tc-story-river {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.tc-tiddler-frame\n{\n    max-width: 49%; margin-right: 1%;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/notebook&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/notebook&quot;,&quot;created&quot;:&quot;20180412105446259&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056478&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/* Added Oct 15, 2018. Mohammad \nNotebook background by pure css3\nRef:\n[1] http://lea.verou.me/css3patterns\n[2] https://codepen.io/designcouch/pen/vlpiC\n*/\n\n[data-tags ~= \&quot;notebook\&quot;] .tc-tiddler-body {\n  /*background-color:#ffffff;*/\n  padding-left: 35px;\n /* border-left: 2px solid #abced4; */\n  background-image: \n  linear-gradient(#eee .01em, transparent .1em); \n  background-size: 100%  1.5em;\n  position:relative;\n}   \n/* 1.2em is the space between horizontal lines*/\n  [data-tags ~= \&quot;notebook\&quot;] .tc-tiddler-body::before {\n    content:'';\n    display:block;\n    position:absolute;\n    z-index:1;\n    top:0;\n    left:25px;\n    height:100%;\n    width:2px;\n    background:#abced4;\n  }&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/shortcuts&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/shortcuts&quot;,&quot;created&quot;:&quot;20181101153533029&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056475&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*\n\n*/\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/sticky-footer&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/sticky-footer&quot;,&quot;created&quot;:&quot;20180907070611557&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056471&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;.sticky-footer {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 0.5rem;\n  background-color: #efefef;\n  text-align: center;\n  margin-top: 5px;\n  box-sizing: border-box;\n  width: 100%;\n}\n&quot;},&quot;$:/plugins/kookma/shiraz/stylesheet/tables&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/stylesheet/tables&quot;,&quot;caption&quot;:&quot;Striped rows and columns&quot;,&quot;created&quot;:&quot;20180413092232257&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056468&quot;,&quot;tags&quot;:&quot;$:/tags/Stylesheet&quot;,&quot;type&quot;:&quot;text/css&quot;,&quot;text&quot;:&quot;/*\nThis tiddler defines the custom stylesheet for tables \nApril 13, 2018\n*/\n\n/*center aligned table*/\n.table-center {\n margin:0 auto;\n}\n\n/* Table caption at top */\n.table-caption-top caption {\n caption-side:top;\n margin-bottom:0.2rem;\n}\n\n/* Striped row table */\n.table-striped-row tr:nth-child(even) td{\n  background-color:#F3F6F6; \n}\n\n/* Striped column table */\n.table-striped-col tbody tr td:nth-child(odd) {\n\tbackground-color: #F3F6F6;\n}\n\n/*Borderless table*/\n.table-borderless, \n.table-borderless thead td, \n.table-borderless th, \n.table-borderless tr, \n.table-borderless td{\n  border:0;\n}\n\n/* Table lines should be used with table-borderless for abbreviations and two column layout */\n\n.table-lines thead td, .table-lines th{\n   border-bottom: 2px solid #dddddd;\n\t background-color:unset;\n   }\n.table-lines td{\n   border-bottom: 1px solid #dddddd;\n   background-color:unset;\n   }\n\n/* Table hover (yellow background on mouse over) */\n.table-hover tbody tr:hover{\n  color: #212529;\n  background-color: #e6e6e6;\n}\n.table-hover-yellow tbody tr:hover{background-color: #ffffcc;}\n.table-hover-cyan tbody tr:hover{background-color: #e6ffff;}\n\n/* Table with colored header */\n.thead-primary thead td, .thead-primary th{background-color: #007bff; color: #fff;}\n.thead-secondary thead td, .thead-secondary th{background-color: #6c757d; color: #fff;}\n.thead-success thead td, .thead-success th{background-color: #28a745; color: #fff;}\n.thead-warning thead td, .thead-warning th{background-color: #ffc107; color: #fff;}\n.thead-danger thead td, .thead-danger th{background-color: #dc3545; color: #fff;}\n.thead-info thead td, .thead-info th{background-color: #17a2b8; color: #fff;}\n.thead-dark thead td, .thead-dark th{background-color: #343a40; color: #fff;}\n.thead-light thead td, .thead-dark th{background-color: #f8f9fa; color: #212529;}&quot;},&quot;$:/plugins/kookma/shiraz/ui/ControlPanel/Settings&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/ui/ControlPanel/Settings&quot;,&quot;caption&quot;:&quot;Shiraz&quot;,&quot;created&quot;:&quot;20191018054657077&quot;,&quot;modified&quot;:&quot;20191018054844683&quot;,&quot;tags&quot;:&quot;$:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;These settings let you customise the behaviour of Shiraz plugin.\n\n---\n\n;Show Shiraz setting in more sidebar\n:&lt;$checkbox tiddler=\&quot;$:/plugins/kookma/shiraz/ui/ControlPanel/Settings\&quot; tag=\&quot;$:/tags/MoreSideBar\&quot;&gt; Show setting in more sidebar&lt;/$checkbox&gt;\n\n;Options\n:&lt;$checkbox tiddler=\&quot;$:/plugins/kookma/utility/pagecontrol/view-fields-button\&quot; tag=\&quot;$:/tags/PageControls\&quot;&gt; Enable show fields&lt;/$checkbox&gt;\n&quot;},&quot;$:/plugins/kookma/shiraz/viewtemplates/sticky-footer&quot;:{&quot;title&quot;:&quot;$:/plugins/kookma/shiraz/viewtemplates/sticky-footer&quot;,&quot;created&quot;:&quot;20180907071314793&quot;,&quot;creator&quot;:&quot;Mohammad&quot;,&quot;modified&quot;:&quot;20191013153056462&quot;,&quot;tags&quot;:&quot;$:/tags/ViewTemplate&quot;,&quot;type&quot;:&quot;text/vnd.tiddlywiki&quot;,&quot;text&quot;:&quot;&lt;$list filter=\&quot;[all[current]has[sticky-footer]]\&quot;&gt;\n&lt;div class=\&quot;sticky-footer\&quot;&gt;\n{{!!sticky-footer}}\n&lt;/div&gt;\n&lt;/$list&gt;\n&quot;}}}</pre>
 </div>
 <div author="JoaoBolila" core-version="&gt;=5.0.0" dependents="" description="Highlight.js: syntax highlighting" list="readme usage howto license" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -14665,8 +14799,11 @@ exports.click = ClickListener;
 <div created="20131211131022562" creator="pimgeek" modified="20191015083643908" modifier="pimgeek" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>引思网卡片库&lt;br&gt;&lt;small&gt;基于 TiddlyWiki 构建&lt;/small&gt;</pre>
 </div>
-<div created="20191027171445864" creator="pimgeek" modified="20191027171449488" modifier="pimgeek" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20191030093142304" creator="pimgeek" modified="20191030094146392" modifier="pimgeek" title="$:/state/sidebar" revision="4" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20191030094137633" creator="pimgeek" modified="20191030094526888" modifier="pimgeek" title="$:/state/tab--1498284803" revision="5" bag="default">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>no</pre>
@@ -14680,7 +14817,10 @@ exports.click = ClickListener;
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre>pimgeek</pre>
 </div>
-<div list="" title="$:/StoryList" revision="2" bag="default">
+<div created="20191030094133491" creator="pimgeek" list="about" modified="20191030095403066" modifier="pimgeek" title="$:/StoryList" revision="26" bag="default">
+<pre></pre>
+</div>
+<div created="20191030094153106" creator="pimgeek" field="" modified="20191030095409541" modifier="pimgeek" title="$:/temp/advancedsearch" revision="10" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -14728,11 +14868,11 @@ exports.click = ClickListener;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1366&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;768&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -14740,6 +14880,9 @@ exports.click = ClickListener;
         }
     }
 }</pre>
+</div>
+<div created="20191030094150317" creator="pimgeek" modified="20191030094153106" modifier="pimgeek" title="$:/temp/search" revision="7" bag="default">
+<pre></pre>
 </div>
 <div created="20191015083037292" creator="pimgeek" modified="20191020151359206" modifier="pimgeek" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -14862,13 +15005,22 @@ exports.click = ClickListener;
 <div created="20191019064450620" creator="pimgeek" modified="20191020150814030" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/options/stickytitles" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>no</pre>
 </div>
-<div created="20191015081827243" creator="pimgeek" modified="20191017015852735" modifier="pimgeek" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>pop</pre>
+<div created="20191030065916974" creator="pimgeek" modified="20191030065920913" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/settings/codefontfamily" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&quot;Sarasa Term SC&quot;, &quot;SFMono-Regular&quot;,Consolas,&quot;Liberation Mono&quot;,Menlo,Courier,monospace</pre>
 </div>
-<div created="20191022160641098" creator="pimgeek" modified="20191027141240137" modifier="pimgeek" name="关于本站" title="about" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191029093251699" creator="pimgeek" modified="20191029093307853" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&quot;Sarasa Term SC&quot;, Tahoma</pre>
+</div>
+<div created="20191030065924355" creator="pimgeek" modified="20191030065933446" modifier="pimgeek" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&quot;Sarasa UI SC&quot;,-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;</pre>
+</div>
+<div created="20191015081827243" creator="pimgeek" modified="20191028135432732" modifier="pimgeek" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>classic</pre>
+</div>
+<div created="20191022160641098" creator="pimgeek" modified="20191028034742207" modifier="pimgeek" name="关于本站" title="about" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
-&lt;a href=&quot;https://tiddlywiki.com&quot;&gt;
+&lt;a href=&quot;https://tiddlywiki.com&quot; rel=&quot;noopener noreferrer&quot;&gt;
 [img[https://pimfans.hintsnet.com/picgo/20191024071632.png]]
 &lt;/a&gt;
 
@@ -14876,7 +15028,7 @@ exports.click = ClickListener;
 
 首次来访的读者，欢迎从 [[“相见恨晚的知识”|the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier]] 条目开始阅读。
 
-!!!! 借助全文搜索工具自行查找
+!!! ''全文搜索''
 
 {{$:/.tb/ui/AdvancedSearch/Field}}</pre>
 </div>
@@ -14902,6 +15054,11 @@ exports.click = ClickListener;
 </div>
 <div caption="指向内部条目的按钮" created="20191024225710315" creator="pimgeek" modified="20191024225839818" modifier="pimgeek" name="指向内部条目的按钮" tags="$:/tags/TextEditor/Snippet" title="button-that-navigates-to-internal-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$button to=&quot;条目 title&quot;&gt;按钮文本&lt;/$button&gt;</pre>
+</div>
+<div created="20191030040813107" creator="pimgeek" modified="20191030040914421" modifier="pimgeek" name="DiamondYuan's Wiki" tags="" title="diamond-yuan-wiki" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+Diamond Yuan 的个人知识库 - https://wiki.yfd.im/</pre>
 </div>
 <div created="20191023133418517" creator="pimgeek" modified="20191024031440885" modifier="pimgeek" name="无序信息黑洞预警！" tags="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" title="disordered-information-blackhole-warning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
@@ -14989,6 +15146,18 @@ exports.click = ClickListener;
 
 具体可参考 - https://tiddlywiki.com/#Simple%20ways%20to%20write%20protect%20tiddlers</pre>
 </div>
+<div created="20191027174637722" creator="pimgeek" modified="20191027175516226" modifier="pimgeek" name="如何让笔记条目中的图片更美观?" tags="TiddlyWiki" title="how-to-make-image-look-better-in-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+`&lt;&lt;image-basic img:&quot;&quot; width:&quot;50%&quot; align:&quot;center&quot; caption:&quot;&quot; tooltip:&quot;&quot; alt:&quot;&quot;&gt;&gt;`
+
+具体可参考 - https://kookma.github.io/Shiraz/#Shiraz%20Tutorial</pre>
+</div>
+<div created="20191030095048913" creator="pimgeek" modified="20191030095226594" modifier="pimgeek" name="在 TiddlyWiki 中, 如何实现按字段搜索?" tags="TiddlyWiki" title="how-to-search-by-selected-field-in-tiddlywiki" revision="2" bag="default">
+<pre>! &lt;$view field=&quot;name&quot;/&gt;
+
+具体参考 - https://tobibeer.github.io/tb5/#Searching%20In%20Tiddler%20Fields</pre>
+</div>
 <div created="20191022121036015" creator="pimgeek" modified="20191023102049174" modifier="pimgeek" name="如何理解最优学习百分比 (15.87%) ?" tags="" title="how-to-understant-optimal-learning-percentage-15.87" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
@@ -15009,68 +15178,43 @@ exports.click = ClickListener;
 <div caption="name 字段" created="20191023032115214" creator="pimgeek" modified="20191023102024905" modifier="pimgeek" tags="$:/tags/TextEditor/Snippet" title="name 字段" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;</pre>
 </div>
-<div created="20191022160725899" creator="pimgeek" modified="20191024152115152" modifier="pimgeek" name="pimgeek 自我介绍" title="pimgeek" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191022160725899" creator="pimgeek" modified="20191028053516524" modifier="pimgeek" name="pimgeek 自我介绍" title="pimgeek" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
-[img[https://hintsnet.com/pimgeek/wp-content/uploads/2017/06/cropped-pimgeek-avatar.jpg]]
+&lt;&lt;image-basic img:&quot;https://hintsnet.com/pimgeek/wp-content/uploads/2017/06/cropped-pimgeek-avatar.jpg&quot; width:&quot;50%&quot; align:&quot;center&quot; alt:&quot;pimgeek avatar&quot;&gt;&gt;
 
 pimgeek — [[集智俱乐部|http://www.swarma.org/]] 核心志愿者，现任 [[注意力与知识管理微信群|http://wiki.swarma.net/index.php/%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%BE%A4]] 群主，个人笔记信息管理专家，百科知识爱好者，擅长用电脑和手机搞定笔记管理，思维导图，概念图，启发信息网络图等（详见 [[本站文集内容|https://hintsnet.com/pimgeek/blog/]]）。
 
+&lt;a href=&quot;https://zhihu.com/people/pimgeek&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;$button class=&quot;btn btn-primary&quot;&gt;知乎&lt;/$button&gt;&lt;/a&gt;&amp;nbsp;
+&lt;a href=&quot;https://weibo.com/scrutiny1&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;$button class=&quot;btn btn-danger&quot;&gt;微博&lt;/$button&gt;&lt;/a&gt;
+
 ----
 
-用知识跨越时空界限, 建立互助连接</pre>
+用知识跨越时空界限, 建立互助连接
+</pre>
 </div>
-<div created="20191020152607678" creator="pimgeek" modified="20191024030725773" modifier="pimgeek" name="pimgeek 自定义站点 CSS 样式" tags="$:/tags/Stylesheet" title="pimgeek-customized-site-css-style" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>img {
- border-radius:10px;
-}
-.centered {
- text-align: center;
-}
-.tc-titlebar {
- line-height:100% !important;
-}
-.tc-titlebar h2 {
- border-left: 3px solid orange;
- border-bottom: 1px dashed orange;
- padding-left: 6px;
- padding-bottom: 2px;
- color: dimgray;
- font-size:14px !important;
-}
-.tc-tiddler-frame {
- border-radius:12px !important;
-}</pre>
-</div>
-<div created="20191021024856016" creator="pimgeek" modified="20191027025622723" modifier="pimgeek" name="pimgeek 偏好的 KM 软件快捷键检查列表" tags="" title="pimgeek-preferred-km-software-shortcut-key-checklist" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191021024856016" creator="pimgeek" modified="20191028074503373" modifier="pimgeek" name="pimgeek 偏好的 KM 软件快捷键检查列表" tags="" title="pimgeek-preferred-km-software-shortcut-key-checklist" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot; /&gt;
 
 @@background-color:white;
 | !功能名称 | !功能说明 | !偏好的快捷键 | !软件案例 |
-| 创建节点 | 创建一个新的笔记/卡片/条目 | Ctrl-N | [[ZimWiki]] |
+| 创建节点 | 创建一个新的节点/笔记/卡片/条目 | Ctrl-N | [[ZimWiki]] |
 | 编辑模式 | 启用编辑模式 | F2 | [[TheBrain]] / [[ConnectedText]] |
 | 创建外链 | 创建一个指向外部网站的超链接 | Ctrl-L | .. |
+| 重新读取 | 重新读取当前节点或整个笔记列表的内容 | Ctrl-R | [[Workflowy]] / [[ConnectedText]] |
+| 文内引用 | 在当前节点中插入针对另一节点的引用（含内部链接 + 引文格式定义） | Alt-R | [[ConnectedText]] |
 | 文本缩进 | 增加或减少缩进 | Tab, Shift-Tab | [[Workflowy]] |
 | 节点折叠 | 在大纲或导图视图中，把当前节点的子节点列表折叠或展开 | 命令模式下 左 / 右方向键&lt;br&gt;编辑模式下 Alt-f | 命令模式案例 [[LeoEditor]]&lt;br&gt;编辑模式案例 [[Dynalist]] |
 | 节点升降 | 在大纲视图中，把当前节点暂时提升到根节点的地位（暂时），或取消提升 | Alt-i, Alt-o | [[TreeSheets]] |
 | 自动完成 | 弹出一个可选输入列表 | Ctrl-Space 或 Ctrl-/ | [[ConnectedText]] |
+| 查看前置 | 查看有哪些其它节点直接指向当前节点 | Alt-B | [[ConnectedText]] |
 |..|..|..|..|
 @@</pre>
 </div>
-<div created="20191024080810453" creator="pimgeek" modified="20191025015640948" modifier="pimgeek" name="与 Tag 功能有关的系统条目列表" tags="" title="tag-function-related-system-tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>! &lt;$view field=&quot;name&quot;/&gt;
-
-* 当前条目 --引用--&gt; $:/core/ui/ViewTemplate
-* $:/core/ui/ViewTemplate ==引用==&gt; $:/core/ui/ViewTemplate/tags
-* $:/core/ui/ViewTemplate/tags ==引用==&gt; $:/core/ui/TagTemplate
-* $:/core/ui/TagTemplate ==引用==&gt; $:/core/ui/ListItemTemplate
-* $:/core/ui/ListItemTemplate ==决定==&gt; 最初条目中的 Tag 链接如何显示
-* [[$:/pimgeek-customized-list-macro]] ==决定==&gt; Tag 下拉列表的显示方式</pre>
-</div>
-<div created="20191020141247744" creator="pimgeek" modified="20191027141302784" modifier="pimgeek" name="相见恨晚的知识" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191020141247744" creator="pimgeek" modified="20191030095349157" modifier="pimgeek" name="相见恨晚的知识" tags="" title="the-sharing-of-knowledge-that-i-wish-i-could-learn-earlier" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>! 分享一些 &quot;&lt;$view field=&quot;name&quot; /&gt;&quot;
 
-[img[https://pimfans.hintsnet.com/picgo/20191023220638.png]]
+&lt;&lt;image-basic img:&quot;https://pimfans.hintsnet.com/picgo/20191023220638.png&quot; align:&quot;center&quot; width:&quot;60%&quot;&gt;&gt;
 
 &quot;相见恨晚的知识&quot; 是本站的重要内容专题之一。
 
@@ -15092,16 +15236,14 @@ JPG 文件有两种保存方式, 分别是 Baseline JPG (基准式) 和 Progress
 
 参考 - https://www.biaodianfu.com/progressive-jpeg.html</pre>
 </div>
-<div created="20191027141026208" creator="pimgeek" modified="20191027171435089" modifier="pimgeek" name="判断意识理论与相关应用技术是否成熟的依据是什么？" title="what-is-the-basis-for-judging-whether-consciousness-theory-and-related-application-technologies-are-mature" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191027141026208" creator="pimgeek" modified="20191027172939400" modifier="pimgeek" name="判断意识理论及其相关应用技术是否成熟的依据是什么？" title="what-is-the-basis-for-judging-whether-consciousness-theory-and-related-application-technologies-are-mature" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! &lt;$view field=&quot;name&quot;/&gt;
 
-[img[https://pimfans.hintsnet.com/qna/170805/hdfkDhA5AC.png]]
+&lt;&lt;image-pretty img:&quot;https://pimfans.hintsnet.com/qna/170805/hdfkDhA5AC.png&quot; align:&quot;center&quot; caption:&quot;磁带播放机示意图&quot; width:&quot;50%&quot;&gt;&gt;
 
 * pimgeek 认为，目前很难给出一个必要条件，但可以给出一个充分条件：
 
-| |如果能通过操作指令的方式，让受试者的主观感受出现类似于磁带机 / 视频播放那样的快进、快退、暂停等效果，就可以认为该意识理论和相关应用技术已经成熟了。| |
-
-</pre>
+&lt;&lt;alert info &quot;如果能通过操作指令的方式，让受试者的主观感受出现类似于磁带机 / 视频播放那样的快进、快退、暂停等效果，就可以认为该意识理论及其相关应用技术已经成熟了。&quot; &gt;&gt;</pre>
 </div>
 
 </div>
