@@ -1,0 +1,17 @@
+created: 20191219092040436
+creator: admin
+modified: 20191219093717961
+modifier: admin
+tags: 小鱼维基内网版初始化配置包
+title: 欢迎使用小鱼笔记！
+type: text/vnd.tiddlywiki
+
+{{!!modifier}} 你好，欢迎使用小鱼笔记！
+
+# 如果想创建新笔记卡片，可以点击侧边栏中的 {{$:/core/images/new-button}} 按钮
+# 在编辑的过程中，可能会用到一些特殊的标记语法，可以查看 [[【帮助】小鱼维基内容标记语法]]。
+# 如果想保存笔记卡片，可以在编辑模式下点击 {{$:/core/images/done-button}} 按钮
+# 如果想保存图片内容，可以直接把图片文件拖拽到卡片编辑区域，或者截图后点击 Ctrl+V 组合键，然后点击 ''导入'' 按钮，如下图所示：<br><br>@@.centered-block {{从剪贴板导入的图片.png}} @@
+# 如果想查看最近曾经编写过的笔记卡片，可以查看侧边栏中的 ''最近'' 栏目
+# 如果想把网上的笔记保存到自己的个人电脑上，可以点击侧边栏中的 {{$:/core/images/save-button}} 按钮（必须在 PC / Mac 电脑的桌面端浏览器中操作，手机上点击无效）
+# 如果还有其它疑问，可以访问 [[小鱼维基（TiddlyWiki）|https://tiddlywiki.com/]] 官网获取帮助。
